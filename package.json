@@ -1,0 +1,28 @@
+{
+  "name": "flyte-solutions-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Flyte Solutions corporate website (Next.js App Router).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.13.0",
+    "aos": "^2.3.4",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-phone-number-input": "^3.4.11",
+    "swiper": "^11.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "node-html-parser": "^7.0.1"
+  }
+}

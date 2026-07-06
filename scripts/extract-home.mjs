@@ -1,0 +1,144 @@
+/**
+ * Parses app/content.js into lib/home/static.js
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { parse } from "node-html-parser";
+
+const SRC = path.resolve("app/content.js");
+const OUT = path.resolve("lib/home/static.js");
+
+function readHtml(file) {
+  const mod = fs.readFileSync(file, "utf8");
+  const match = mod.match(/export default "([\s\S]*)";?\s*$/);
+  if (!match) throw new Error(`Could not read ${file}`);
+  return match[1]
+    .replace(/\\n/g, "\n")
+    .replace(/\\"/g, '"')
+    .replace(/\\'/g, "'")
+    .replace(/\\u([\dA-Fa-f]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
+}
+
+function text(el) {
+  return el?.text?.trim().replace(/\s+/g, " ") || "";
+}
+
+const html = readHtml(SRC);
+const root = parse(html);
+
+const hero = {
+  title: text(root.querySelector("h1")),
+  description: text(root.querySelector(".container.flex.flex-col p")),
+};
+
+const bannerIndustries = [];
+for (const link of root.querySelectorAll("a.bannerIndustries")) {
+  const icon = link.querySelector("i")?.getAttribute("class") || "";
+  bannerIndustries.push({
+    href: link.getAttribute("href") || "#",
+    icon,
+    label: text(link.querySelector("h1")),
+  });
+}
+
+const about = {
+  eyebrow: "About Company",
+  title: text([...root.querySelectorAll("h2")].find((h) => text(h).includes("Solutions That Drive"))),
+  description:
+    text(root.querySelector(".mb-4.text-black.text-base")) ||
+    "Flyte Solutions offers custom software development, IT staff augmentation, and MVP development services to help you launch faster and scale smarter. From SaaS application development to dedicated remote development teams, we deliver secure, scalable, and cost-effective solutions for startups, SMEs, and enterprises worldwide.",
+  stats: [
+    { value: "12+", label: "Years Experience", icon: "https://i.ibb.co.com/wN59CwQ/flat-color-icons-calendar.png" },
+    { value: "350+", label: "Projects Completed", icon: "https://i.ibb.co.com/3N1bD6Y/fxemoji-clipboard.png" },
+    { value: "97%", label: "Recurring Clients", icon: "https://i.ibb.co.com/CBFFjvr/emojione-handshake.png" },
+    { value: "500+", label: "Solutions Delivered", icon: "https://i.ibb.co.com/wcBcfyL/twemoji-delivery-truck.png" },
+  ],
+};
+
+const services = [];
+const servicesGrid = root.querySelectorAll("a.group.relative.h-auto.p-6");
+for (const card of servicesGrid) {
+  const icon = card.querySelector("i")?.getAttribute("class") || "";
+  const h3 = card.querySelector("h3");
+  const p = card.querySelector("p.text-\\[\\#565D6D\\]") || card.querySelector("p");
+  if (!h3) continue;
+  services.push({
+    href: card.getAttribute("href") || "#",
+    icon,
+    title: text(h3),
+    description: text(p),
+  });
+}
+
+const aiMl = {
+  eyebrow: "AI & ML",
+  title: text([...root.querySelectorAll("h1")].find((h) => text(h).includes("New Era of Artificial"))),
+  image: root.querySelector('img[alt="ai-and-ml-senction-image"]')?.getAttribute("src") || "/images/ai-and-ml-senction-image.png",
+  headline: text(root.querySelector("h2.text-xl")),
+  description: text(root.querySelector(".border.border-gray-100 p.text-base")),
+  bullets: [...root.querySelectorAll(".fa-check")].slice(0, 4).map((el) => text(el.parentNode?.querySelector("p"))),
+  benefits: [],
+};
+
+for (const card of root.querySelectorAll(".bg-\\[\\#F1F4FE\\], .bg-\\[\\#F7F2FD\\]")) {
+  const h4 = card.querySelector("h4");
+  const p = card.querySelector("p");
+  const icon = card.querySelector("i")?.getAttribute("class") || "";
+  if (h4 && p) aiMl.benefits.push({ icon, title: text(h4), description: text(p) });
+}
+
+const industryTabs = [];
+const sidebar = root.querySelector(".border-2.border-\\[\\#DEE1E6\\]");
+for (const row of sidebar?.querySelectorAll(".px-\\[15px\\].py-4") || []) {
+  const icon = row.querySelector("i")?.getAttribute("class") || "";
+  const label = text(row.querySelector("p"));
+  if (!label) continue;
+  industryTabs.push({ icon, label, slug: label.toLowerCase().replace(/ & /g, "-and-").replace(/ /g, "-") });
+}
+
+const fintechFeatures = [];
+const featureCards = root.querySelectorAll(".max-w-full.flex-grow.h-\\[189px\\]");
+for (const card of featureCards) {
+  const icon = card.querySelector("i")?.getAttribute("class") || "";
+  const title = text(card.querySelector(".font-semibold"));
+  const desc = text(card.querySelector(".text-xs.font-normal"));
+  if (title) fintechFeatures.push({ icon, title, description: desc });
+}
+
+const slugMap = {
+  Fintech: "fintech",
+  Startup: "startup",
+  Logistics: "logistics",
+  "Retail & Manufacturing": "retail-and-manufacturing",
+  Enterprise: "enterprise",
+  Education: "education",
+  "Real Estate": "real-estate",
+  "Medical & Healthcare": "medical-and-healthcare",
+  "Technology Company": "technology-company",
+  "Media & Entertainment": "media-and-entertainment",
+  NGO: "ngo",
+};
+
+industryTabs.forEach((tab) => {
+  tab.slug = slugMap[tab.label] || tab.slug;
+  tab.href = `/industries/${tab.slug}`;
+});
+
+const out = `/** Auto-generated by scripts/extract-home.mjs */
+export const HOME_HERO = ${JSON.stringify(hero, null, 2)};
+
+export const HOME_BANNER_INDUSTRIES = ${JSON.stringify(bannerIndustries, null, 2)};
+
+export const HOME_ABOUT = ${JSON.stringify(about, null, 2)};
+
+export const HOME_SERVICES = ${JSON.stringify(services, null, 2)};
+
+export const HOME_AI_ML = ${JSON.stringify(aiMl, null, 2)};
+
+export const HOME_INDUSTRY_TABS = ${JSON.stringify(industryTabs, null, 2)};
+
+export const HOME_FINTECH_FEATURES = ${JSON.stringify(fintechFeatures, null, 2)};
+`;
+
+fs.writeFileSync(OUT, out);
+console.log("Wrote", OUT);
