@@ -185,7 +185,7 @@ export default function ContactSection({ title = "Get in Touch with Us" }: Conta
                   <button
                     type="submit"
                     disabled={status.state === "loading"}
-                    className="cursor-pointer bgGradientNevyBlue w-[180px] h-10 px-8 py-3 rounded-md text-white text-sm font-semibold disabled:opacity-60"
+                    className="cursor-pointer bg-blue-500 w-45 h-10 px-8 py-3 rounded-md text-sm font-semibold"
                   >
                     {status.state === "loading" ? "Sending..." : "Send Message"}
                   </button>

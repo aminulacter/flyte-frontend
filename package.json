@@ -11,13 +11,16 @@
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.13.0",
+    "@tailwindcss/postcss": "^4.3.2",
     "aos": "^2.3.4",
     "next": "^15.1.6",
+    "postcss": "^8.5.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
     "react-phone-number-input": "^3.4.11",
-    "swiper": "^11.2.1"
+    "swiper": "^11.2.1",
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
     "@types/aos": "^3.0.8",

@@ -40,9 +40,12 @@ export default function HomeProducts({ products = [] }: { products?: Product[] }
           ))}
         </div>
         {items.length > 0 && (
-          <div className="mt-4">
-            <Link href="/products" className="text-[#5856d6] text-sm font-semibold hover:underline">
-              View all products →
+          <div className="flex flex-col items-center justify-center lg:flex-row gap-2 mt-8">
+            <Link
+              className="w-fit px-8 py-3 border border-btnColor hover:border-pink-500 bg-btnColor hover:bg-pink-500 text-white rounded-md"
+              href="/schedule-consultation"
+            >
+              See All Products
             </Link>
           </div>
         )}

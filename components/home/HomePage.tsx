@@ -21,7 +21,7 @@ export default async function HomePage() {
       <HomeAbout />
       <HomeServices />
       <HomeProducts products={products} />
-      <HomeAiMl />
+      {/* <HomeAiMl /> */}
       <HomeIndustries />
       <TechnologyStacksSection />
       <HomeSoftwareSolutions solutions={solutions || []} />
