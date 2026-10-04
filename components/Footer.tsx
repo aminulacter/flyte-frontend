@@ -30,8 +30,8 @@ const fallback: InitSystemData = {
   services: null,
 };
 
-function FooterSkeleton() {
-  const Block = () => (
+function FooterSkeletonBlock() {
+  return (
     <div className="space-y-11">
       <div className="animate-pulse rounded-md w-40 h-4 bg-gray-400" />
       <div className="space-y-5">
@@ -44,6 +44,9 @@ function FooterSkeleton() {
       </div>
     </div>
   );
+}
+
+function FooterSkeleton() {
   return (
     <div className="py-10 grid grid-cols-1 lg:grid-cols-4 gap-10">
       <div className="space-y-4">
@@ -54,9 +57,9 @@ function FooterSkeleton() {
         <div className="animate-pulse rounded-md w-full h-4 bg-gray-400" />
         <div className="animate-pulse rounded-md w-full h-4 bg-gray-400" />
       </div>
-      <Block />
-      <Block />
-      <Block />
+      <FooterSkeletonBlock />
+      <FooterSkeletonBlock />
+      <FooterSkeletonBlock />
     </div>
   );
 }
@@ -259,12 +262,12 @@ export default function Footer() {
   const services = data?.services;
 
   return (
-    <footer id="page-footer">
+    <footer id="page-footer" className="bg-[#2A3342]">
       <div className="container">
         {loading ? (
           <FooterSkeleton />
         ) : (
-          <div className="footer text-base-content lg:py-10 bg-[#2A3342]">
+          <div className="footer text-base-content lg:py-10 ">
             <ContactColumn contact={contact} />
             <div className="flex flex-row lg:flex-col justify-start items-start">
               <LinkSection section={services} className="w-full lg:mt-8" />
