@@ -1,4 +1,5 @@
 import Script from "next/script";
+import "@/components/ui/buttons.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientInit from "@/components/ClientInit";
@@ -64,6 +65,7 @@ const STYLES = [
   "/assets/css/947b6a80bcdd8921.css", // react-phone-number-input
   "/assets/css/4de333da6e7fcd79.css", // Swiper
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css",
+  "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap",
 ];
 
 import type { LayoutProps } from "@/lib/types";

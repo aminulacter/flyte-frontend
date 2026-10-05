@@ -1,4 +1,12 @@
 // Auto-generated from app/hire/*/content.js by scripts/extract-hire-roles.mjs
+import {
+  getSpecialtyParentCategory,
+  isHireSpecialty,
+} from "@/lib/hire/catalog";
+import { withSpecialtyExpertise } from "@/lib/hire/catalogue";
+import { HIRE_STUB_ROLES } from "@/lib/hire/stubRoles";
+import type { HireRole } from "@/lib/types";
+
 export const HIRE_ROLES = [
   {
     "slug": "ai-ml-developer",
@@ -690,7 +698,7 @@ export const HIRE_ROLES = [
       "eyebrow": "HIRE MOBILE APP DEVELOPERS",
       "title": "Hire Dedicated Mobile App Developers for Seamless User Experiences",
       "description": "Build responsive, interactive, and high-performing web applications with our expert frontend developers. We specialize in seamless user experiences, cutting-edge frameworks, and optimized performance for fast, scalable, and visually stunning interfaces.",
-      "image": "https://i.ibb.co.com/b5kgnLyz/Frame-1000005999-1.png",
+      "image": "/images/hire/mobile-app.webp",
       "ctaLabel": "Hire Mobile App Developers Now",
       "ctaHref": "/hire/application-form"
     },
@@ -1289,13 +1297,39 @@ export const HIRE_ROLE_SLUGS = [
   "backend-developer",
   "devops-engineer",
   "frontend-developer",
+  "laravel-developer",
   "mobile-app-developer",
   "nextjs-developer",
+  "nodejs-developer",
+  "python-developer",
   "qa-engineer",
   "reactjs-developer",
-  "vuejs-developer"
+  "vuejs-developer",
 ];
 
-export function getHireRole(slug: string) {
-  return HIRE_ROLES.find((r) => r.slug === slug) || null;
+function findHireRoleRecord(slug: string): HireRole | undefined {
+  return (
+    HIRE_ROLES.find((r) => r.slug === slug) ||
+    HIRE_STUB_ROLES.find((r) => r.slug === slug)
+  );
+}
+
+/** Category and specialty pages with dedicated copy in roles/stubs. */
+export function getHireRole(slug: string): HireRole | null {
+  return findHireRoleRecord(slug) ?? null;
+}
+
+/**
+ * Specialty route resolver: dedicated copy when present, otherwise parent category
+ * content until `/hire-sp` copy is added (keeps static export paths working).
+ */
+export function getHireSpecialtyRole(slug: string): HireRole | null {
+  const direct = findHireRoleRecord(slug);
+  if (direct) return withSpecialtyExpertise(direct, slug);
+  if (!isHireSpecialty(slug)) return null;
+  const parentSlug = getSpecialtyParentCategory(slug);
+  if (!parentSlug) return null;
+  const parent = findHireRoleRecord(parentSlug);
+  if (!parent) return null;
+  return withSpecialtyExpertise(parent, slug);
 }

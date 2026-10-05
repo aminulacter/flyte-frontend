@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MEGA_MENUS, COMPANY_MENU } from "@/lib/navigation";
 import type { MegaMenu } from "@/lib/types";
 
@@ -42,20 +45,21 @@ function ReviewWidgets({ label }: { label: string }) {
   );
 }
 
-function DropdownButton({ label }: { label: string }) {
+function DropdownButton({ label, light }: { label: string; light: boolean }) {
+  const tone = light ? "text-black" : "group-hover:text-black lg:text-white";
   return (
     <div className="nav__link dropdown__button  ">
-      <p className=" hover:text-[#2B6CB0] group-hover:text-black  lg:text-white">{label}</p>
-      <i className="fa-solid fa-chevron-down fa-2xs group-hover:text-black lg:text-white" />
+      <p className={`hover:text-[#2B6CB0] ${tone}`}>{label}</p>
+      <i className={`fa-solid fa-chevron-down fa-2xs ${tone}`} />
     </div>
   );
 }
 
-function MegaDropdown({ menu }: { menu: MegaMenu }) {
+function MegaDropdown({ menu, light }: { menu: MegaMenu; light: boolean }) {
   const { label, title, description, moreHref, items } = menu;
   return (
     <li className="dropdown__item">
-      <DropdownButton label={label} />
+      <DropdownButton label={label} light={light} />
       <div className="dropdown__container">
         <div className="dropdown__content">
           <div className="lg:container grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
@@ -99,11 +103,11 @@ function MegaDropdown({ menu }: { menu: MegaMenu }) {
   );
 }
 
-function CompanyDropdown({ menu }: { menu: typeof COMPANY_MENU }) {
+function CompanyDropdown({ menu, light }: { menu: typeof COMPANY_MENU; light: boolean }) {
   const { label, title, description, moreHref, items } = menu;
   return (
     <li className="dropdown__item">
-      <DropdownButton label={label} />
+      <DropdownButton label={label} light={light} />
       <div className="dropdown__container">
         <div className="dropdown__content">
           <div className="lg:container grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
@@ -152,10 +156,17 @@ function CompanyDropdown({ menu }: { menu: typeof COMPANY_MENU }) {
 }
 
 export default function Header() {
+  const pathname = usePathname();
+  const light = pathname.startsWith("/hire/") || pathname.startsWith("/hire-sp/");
+  const tone = light ? "text-black" : "group-hover:text-black lg:text-white";
   const [hire, industries, services, products] = MEGA_MENUS;
   return (
     <div className="">
-      <div className="z-[1000] transition-all duration-500 ease-in-out lg:hover:bg-white group fiexed lg:absolute top-0 left-0 w-full bg-transparent">
+      <div
+        className={`group top-0 left-0 z-[1000] w-full transition-all duration-500 ease-in-out lg:absolute ${
+          light ? "bg-white" : "bg-transparent lg:hover:bg-white"
+        }`}
+      >
         <nav className="nav container">
           <div className="nav__data">
             <Link href="/">
@@ -170,19 +181,19 @@ export default function Header() {
 
           <div className="nav__menu" id="nav-menu">
             <ul className="nav__list">
-              <MegaDropdown menu={hire} />
-              <MegaDropdown menu={industries} />
-              <MegaDropdown menu={services} />
-              <MegaDropdown menu={products} />
+              <MegaDropdown menu={hire} light={light} />
+              <MegaDropdown menu={industries} light={light} />
+              <MegaDropdown menu={services} light={light} />
+              <MegaDropdown menu={products} light={light} />
               <li className="">
                 <Link className="nav-close nav__link h-full flex items-center " href="/case-studies">
-                  <span className="group-hover:text-black  lg:text-white">Case Studies</span>
+                  <span className={tone}>Case Studies</span>
                 </Link>
               </li>
-              <CompanyDropdown menu={COMPANY_MENU} />
+              <CompanyDropdown menu={COMPANY_MENU} light={light} />
               <li className="">
                 <Link className="nav-close nav__link h-full flex items-center " href="/career">
-                  <span className="group-hover:text-black  lg:text-white">Career</span>
+                  <span className={tone}>Career</span>
                 </Link>
               </li>
               <li>

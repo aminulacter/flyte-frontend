@@ -2,6 +2,7 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import ContactSection from "@/components/ContactSection";
 import { resolveExploreRoleHref, techStackSlugForRole } from "@/lib/hire/catalog";
+import { resolveSpecialtyExpertiseImage } from "@/lib/hire/catalogue";
 import { TECH_STACK_CARDS } from "@/lib/hire/techStacks";
 import type { HireRole } from "@/lib/types";
 import {
@@ -16,27 +17,27 @@ const imageAlt = "Hire Role Image";
 function HireRoleHero({ hero }: { hero: HireRole["hero"] }) {
   const { eyebrow, title, description, image, ctaLabel, ctaHref } = hero;
   return (
-    <section className="hire-role-hero relative pt-10 lg:min-h-[610px] lg:pt-44">
-      <div className="hire-role-hero__inner container relative pb-8 lg:pb-16">
-        <div className="hire-role-hero__grid grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-          <div className="hire-role-hero__content">
-            <div className="hire-role-hero__copy space-y-4 lg:space-y-6">
-              <p className="hire-role-hero__eyebrow hire-eyebrow flex items-center uppercase tracking-wide text-[#5856d6]">
+    <section className="hire-sp-hero relative pt-10 lg:min-h-[610px] lg:pt-44">
+      <div className="hire-sp-hero__inner container relative pb-8 lg:pb-16">
+        <div className="hire-sp-hero__grid grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+          <div className="hire-sp-hero__content">
+            <div className="hire-sp-hero__copy space-y-4 lg:space-y-6">
+              <p className="hire-sp-hero__eyebrow hire-eyebrow flex items-center uppercase tracking-wide text-[#5856d6]">
                 {eyebrow}
               </p>
-              <h1 className="hire-role-hero__title hire-hero-title text-black">{title}</h1>
-              <p className="hire-role-hero__desc hire-hero-desc">{description}</p>
+              <h1 className="hire-sp-hero__title hire-hero-title text-black">{title}</h1>
+              <p className="hire-sp-hero__desc hire-hero-desc">{description}</p>
             </div>
-            <div className="hire-role-hero__actions mt-8 lg:mt-12">
+            <div className="hire-sp-hero__actions mt-8 lg:mt-12">
               <Link href={ctaHref} className="btn-2">
                 {ctaLabel}
               </Link>
             </div>
           </div>
-          <div className="hire-role-hero__media">
+          <div className="hire-sp-hero__media">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              className="hire-role-hero__image w-full object-cover lg:h-[340px]"
+              className="hire-sp-hero__image w-full object-cover lg:h-[340px]"
               src={image}
               alt={imageAlt || title}
             />
@@ -131,24 +132,32 @@ function DevelopingSection({ developing }) {
   );
 }
 
-function ExpertiseSection({ expertise }) {
+function ExpertiseSection({
+  expertise,
+  slug,
+}: {
+  expertise: HireRole["expertise"];
+  slug: string;
+}) {
+  if (!expertise?.title || !expertise.cards?.length) return null;
+  const imageSrc = resolveSpecialtyExpertiseImage(slug, expertise);
   return (
     <div className="bg-[#f4f2f0]">
       <div className="container pt-10 lg:pb-10">
         <h2 className="hire-section-title mb-3 text-[#060b13] lg:mb-6">{expertise.title}</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-2">
+        <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2">
             {expertise.cards.map((card, i) => (
               <FeatureCard key={i} card={card} />
             ))}
           </div>
-          {expertise.image ? (
-            <div className="lg:col-span-1">
+          {imageSrc ? (
+            <div className="flex items-center justify-center lg:col-span-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="lg:max-w-[391px] max-h-[341px] object-cover"
-                src={expertise.image}
-                alt="Expertise"
+                className="h-auto w-full max-h-[341px] max-w-[391px] object-contain lg:max-w-[391px]"
+                src={imageSrc}
+                alt={expertise.title}
               />
             </div>
           ) : null}
@@ -219,10 +228,11 @@ export function HireRoleSections({ role }: { role: HireRole }) {
     <>
       <HireRoleHero hero={role.hero} />
       <WhyChooseSection section={role.whyChoose} />
-      <TechnologiesSection slug={role.slug} technologies={role.technologies} />
-      <ExploreRolesSection exploreRoles={role.exploreRoles} />
+      {/* <TechnologiesSection slug={role.slug} technologies={role.technologies} />
+      <ExploreRolesSection exploreRoles={role.exploreRoles} /> */}
+      <DreamTeamCta />
       <DevelopingSection developing={role.developing} />
-      {/* <ExpertiseSection expertise={role.expertise} /> */}
+      <ExpertiseSection expertise={role.expertise} slug={role.slug} />
     </>
   );
 }
@@ -230,12 +240,22 @@ export function HireRoleSections({ role }: { role: HireRole }) {
 export function HireRoleSharedTail() {
   return (
     <>
-      <DreamTeamCta />
+
       <FiveStepsSection />
       <EngagementModelsSection />
       <TrustedLeadersSection />
       <ClutchReviewsSection />
       <ContactSection />
     </>
+  );
+}
+
+/** Default page composer for `/hire-sp/[slug]` — customize sections here. */
+export default function HireSpecificRolePage({ role }: { role: HireRole }) {
+  return (
+    <div>
+      <HireRoleSections role={role} />
+      <HireRoleSharedTail />
+    </div>
   );
 }

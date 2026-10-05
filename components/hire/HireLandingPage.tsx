@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "./section-title.css";
 import ContactSection from "@/components/ContactSection";
 import {
   ClutchReviewsSection,
@@ -69,7 +70,7 @@ export default function HireLandingPage() {
 
       <div className="bg-white pb-10">
         <div className="container">
-          <h2 className="max-w-[492px] text-center text-black text-base md:text-[32px] font-semibold font-['Open_Sans'] mx-auto py-5 md:py-10 md:leading-10">
+          <h2 className="hire-section-title mx-auto max-w-[492px] py-5 text-center text-black md:py-10">
             {HIRE_ADVANTAGES_TITLE}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -108,7 +109,7 @@ export default function HireLandingPage() {
 
       <div className="bg-[#FAFAFA] pb-10">
         <div className="container">
-          <h2 className="max-w-[492px] text-center text-black text-base md:text-[32px] font-semibold font-['Open_Sans'] mx-auto py-5 md:py-10 md:leading-10">
+          <h2 className="hire-section-title mx-auto max-w-[492px] py-5 text-center text-black md:py-10">
             {HIRE_SCENARIOS_TITLE}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

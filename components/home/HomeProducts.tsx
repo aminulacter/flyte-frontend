@@ -8,19 +8,12 @@ function HomeProductItem({ product }: { product: Product }) {
   const title = product.title || product.name || "";
 
   return (
-    <Link
-      href={`/products/${product.slug}`}
-      className="flex flex-col justify-center items-center gap-3 mx-4 group"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        className="w-[200px] h-[150px] lg:w-[260px] lg:h-[190px] rounded-[20px] object-cover group-hover:scale-110 transition-all duration-500"
-        src={product.image}
-        alt={title}
-        loading="lazy"
-        decoding="async"
-      />
-      <p className="text-center text-black text-sm font-bold">{title}</p>
+    <Link href={`/products/${product.slug}`} className="home-product-card">
+      <div className="home-product-card__image">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={product.image} alt={title} loading="lazy" decoding="async" />
+      </div>
+      <p className="home-product-card__title">{title}</p>
     </Link>
   );
 }
@@ -29,29 +22,29 @@ export default function HomeProducts({ products = [] }: { products?: Product[] }
   const items = products.filter((p) => p?.slug);
 
   return (
-    <div className="bg-white py-10">
-      <div className="container -mt-5">
-        <p className="pb-2.5 text-lg text-btnColor font-['DM_Sans'] lg:px-0">Our Products</p>
-        <h2 className="lg:w-1/2 text-[#15161B] text-2xl lg:text-4xl px-0 font-semibold text-start lg:leading-[50px]">
-          Bringing Your Ideas To Life With a Diverse Range Of Innovative Products.
-        </h2>
-        {items.length > 0 && (
-          <div className="mt-8 flex flex-row">
-            <Marquee
-              pauseOnHover
-              pauseOnClick
-              gradient
-              gradientColor="white"
-              gradientWidth={150}
-              speed={50}
-            >
-              {items.map((product) => (
-                <HomeProductItem key={product.id || product.slug} product={product} />
-              ))}
-            </Marquee>
-          </div>
-        )}
+    <section className="home-products">
+      <div className="container">
+        <div className="home-products__header">
+          <p className="home-eyebrow">Our Products</p>
+          <h2 className="home-heading home-products__heading">
+            Bringing your ideas to life with a diverse range of innovative products.
+          </h2>
+        </div>
       </div>
-    </div>
+      {items.length > 0 ? (
+        <div className="home-products__track">
+          <Marquee pauseOnHover pauseOnClick gradient={false} speed={50}>
+            {items.map((product) => (
+              <HomeProductItem key={product.id || product.slug} product={product} />
+            ))}
+          </Marquee>
+        </div>
+      ) : null}
+      <div className="home-products__cta">
+        <Link className="home-btn home-btn--sm" href="/products">
+          See All Products
+        </Link>
+      </div>
+    </section>
   );
 }

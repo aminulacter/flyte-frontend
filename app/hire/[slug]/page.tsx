@@ -1,12 +1,17 @@
-import { notFound } from "next/navigation";
-import HireRolePage from "@/components/hire/HireRolePage";
-import { getHireRole, HIRE_ROLE_SLUGS } from "@/lib/hire/roles";
+import { notFound, redirect } from "next/navigation";
+import HireCategoryRolePage from "@/components/hire/HireCategoryRolePage";
+import {
+  HIRE_CATEGORY_SLUGS,
+  hireRolePath,
+  isHireCategory,
+  isHireSpecialty,
+} from "@/lib/hire/catalog";
+import { getHireRole } from "@/lib/hire/roles";
+import type { SlugPageProps } from "@/lib/types";
 
 export function generateStaticParams() {
-  return HIRE_ROLE_SLUGS.map((slug) => ({ slug }));
+  return HIRE_CATEGORY_SLUGS.map((slug) => ({ slug }));
 }
-
-import type { SlugPageProps } from "@/lib/types";
 
 export async function generateMetadata({ params }: SlugPageProps) {
   const { slug } = await params;
@@ -19,9 +24,13 @@ export async function generateMetadata({ params }: SlugPageProps) {
   };
 }
 
-export default async function HireRoleDetailPage({ params }: SlugPageProps) {
+export default async function HireCategoryRoutePage({ params }: SlugPageProps) {
   const { slug } = await params;
+  if (isHireSpecialty(slug)) {
+    redirect(hireRolePath(slug));
+  }
+  if (!isHireCategory(slug)) notFound();
   const role = getHireRole(slug);
   if (!role) notFound();
-  return <HireRolePage role={role} />;
+  return <HireCategoryRolePage role={role} />;
 }

@@ -1,0 +1,22 @@
+/* Second button. Reuse with class "btn-2". */
+.btn-2 {
+  display: inline-block;
+  width: fit-content;
+  padding: 12px 32px;
+  background: #5856d6;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-2:hover,
+.btn-2:active {
+  background: #c20B76;
+  color: #fff;
+}

@@ -6,6 +6,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { submitContact } from "@/lib/api";
 import type { ContactSectionProps, FormStatus } from "@/lib/types";
+import "@/components/hire/section-title.css";
 
 /**
  * "Get in Touch with Us" contact form + "What's Next With Flyte?" panel.
@@ -74,7 +75,7 @@ export default function ContactSection({ title = "Get in Touch with Us" }: Conta
           <div className="mb-5 flex w-full items-center justify-center">
             <div className="w-full lg:-mb-3">
               <div>
-                <h1 className="w-full text-[#15161B] text-base lg:text-xl px-0 font-semibold text-start lg:leading-[50px]">
+                <h1 className="hire-section-title w-full px-0 text-start text-[#15161B]">
                   {title}
                 </h1>
               </div>

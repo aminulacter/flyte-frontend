@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { CHECK_SVG, ENGAGEMENT_MODELS, HIRE_TRUSTED_LOGOS } from "@/lib/hire/shared";
+import "./section-title.css";
 
 export function DreamTeamCta() {
   return (
     <div className="md:h-[170px] bg-[#5856d6]">
       <div className="container md:flex justify-between items-center pt-3">
         <div className="space-y-2">
-          <h2 className="text-[#f7f7f7] text-2xl md:text-3xl font-bold">Build Your Dream Team</h2>
+          <h2 className="hire-section-title text-[#f7f7f7]">Build Your Dream Team</h2>
           <p className="text-[#f7f7f7] text-base">Access top talent and scale your business effortlessly.</p>
           <div className="pt-2">
             <Link
@@ -33,7 +34,7 @@ export function FiveStepsSection() {
     <div className="bg-white py-4 lg:py-8">
       <div className="container">
         <div>
-          <h1 className="text-[#060b13] text-2xl lg:text-[32px] font-semibold leading-[30px]">
+          <h1 className="hire-section-title text-[#060b13]">
             Hire Our Expert Team in 5 Simple Steps
           </h1>
           <p className="py-6 text-gray-600 text-sm lg:text-base font-normal">
@@ -75,7 +76,7 @@ export function EngagementModelsSection() {
     <div className="bg-white py-4 lg:py-8">
       <div className="container">
         <div>
-          <h1 className="text-[#060b13] text-2xl lg:text-[32px] font-semibold leading-[30px]">
+          <h1 className="hire-section-title text-[#060b13]">
             Hire Top Talent through Flexible Engagement Models
           </h1>
           <p className="py-6 text-gray-600 text-sm lg:text-base font-normal">
@@ -118,7 +119,7 @@ export function EngagementModelsSection() {
 export function ClutchReviewsSection() {
   return (
     <div className="container py-6 mx-auto max-w-5xl">
-      <h2 className="text-2xl lg:text-4xl font-semibold text-center lg:leading-[50px]">
+      <h2 className="hire-section-title text-center">
         Real stories of success and partnership
       </h2>
       <p className="lg:text-center text-neutral-500 text-sm font-normal mt-3 mb-5 lg:mb-10">
@@ -137,7 +138,7 @@ export function ClutchReviewsSection() {
 export function TrustedLeadersSection() {
   return (
     <div className="px-5 md:px-20 py-7 md:py-10 bg-black">
-      <h1 className="text-center text-white text-xl md:text-2xl font-semibold mb-5 md:mb-12">
+      <h1 className="hire-section-title mb-5 text-center text-white md:mb-12">
         Trusted by Industry Leaders
       </h1>
       <div className="flex flex-wrap lg:justify-center gap-4 md:gap-7">
