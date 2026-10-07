@@ -4,7 +4,6 @@ import {
   isHireSpecialty,
 } from "@/lib/hire/catalog";
 import { withSpecialtyExpertise } from "@/lib/hire/catalogue";
-import { HIRE_STUB_ROLES } from "@/lib/hire/stubRoles";
 import type { HireRole } from "@/lib/types";
 
 export const HIRE_ROLES = [
@@ -62,9 +61,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "AI & Machine Learning",
       "description": "Creating intelligent systems that learn, predict, and automate processes using data-driven models.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/ai.webp",
       "imageAlt": "AI & Machine Learning",
-      "stepsTitle": "Smart AI Solutions",
+      "stepsTitle": "Your Path to Hiring AI & ML Developers",
       "steps": [
         {
           "title": "Problem Definition",
@@ -212,9 +213,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Angular Development",
       "description": "Building scalable, high-performance, and dynamic applications using Angular.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/angular.webp",
       "imageAlt": "Angular Development",
-      "stepsTitle": "Angular-Based Interfaces",
+      "stepsTitle": "Your Path to Hiring Angular Developers",
       "steps": [
         {
           "title": "Project Planning",
@@ -238,7 +241,9 @@ export const HIRE_ROLES = [
         }
       ],
       "ctaLabel": "Start Hiring",
-      "ctaHref": "/hire/application-form"
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
     },
     "expertise": {
       "title": "Our React Developers Expertise",
@@ -337,9 +342,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Backend Development",
       "description": "Powering web applications with secure, scalable, and high-performance server-side solutions.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/backend.webp",
       "imageAlt": "Backend Development",
-      "stepsTitle": "Server-Side Solutions",
+      "stepsTitle": "Your Path to Hiring Backend Developers",
       "steps": [
         {
           "title": "System Architecture Planning",
@@ -446,9 +453,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "DevOps",
       "description": "Accelerating software delivery through automation, continuous integration, and scalable infrastructure.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/dev-ops.webp",
       "imageAlt": "DevOps",
-      "stepsTitle": "CI/CD & Automation",
+      "stepsTitle": "Your Path to Hiring DevOps Engineers",
       "steps": [
         {
           "title": "Infrastructure Planning",
@@ -596,9 +605,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Frontend Developer",
       "description": "Crafting responsive, user-friendly, and high-performance web interfaces using modern technologies.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/frontend.webp",
       "imageAlt": "Frontend Developer",
-      "stepsTitle": "UI/UX & Web Interfaces",
+      "stepsTitle": "Your Path to Hiring Frontend Developers",
       "steps": [
         {
           "title": "Requirement Analysis",
@@ -746,9 +757,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Mobile Development",
       "description": "Creating fast, user-friendly, and feature-rich mobile applications for both Android and iOS platforms.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/mobile-app.webp",
       "imageAlt": "Mobile Development",
-      "stepsTitle": "Cross-Platform Apps",
+      "stepsTitle": "Your Path to Hiring Mobile App Developers",
       "steps": [
         {
           "title": "Requirement Gathering",
@@ -772,7 +785,9 @@ export const HIRE_ROLES = [
         }
       ],
       "ctaLabel": "Start Hiring",
-      "ctaHref": "/hire/application-form"
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
     },
     "expertise": {
       "title": "",
@@ -855,9 +870,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Next.js Development",
       "description": "Building fast, scalable, and SEO-friendly applications using Next.js.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/nextjs.avif",
       "imageAlt": "Next.js Development",
-      "stepsTitle": "Next.js-Based Interfaces",
+      "stepsTitle": "Your Path to Hiring Next.js Developers",
       "steps": [
         {
           "title": "Project Planning",
@@ -881,7 +898,9 @@ export const HIRE_ROLES = [
         }
       ],
       "ctaLabel": "Start Hiring",
-      "ctaHref": "/hire/application-form"
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
     },
     "expertise": {
       "title": "Our React Developers Expertise",
@@ -980,9 +999,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Quality Assurance",
       "description": "Ensuring reliable, bug-free, and high-performing software through structured testing processes.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/quality-assurance.webp",
       "imageAlt": "Quality Assurance",
-      "stepsTitle": "Software Testing",
+      "stepsTitle": "Your Path to Hiring QA Engineers",
       "steps": [
         {
           "title": "Requirement Analysis",
@@ -1093,9 +1114,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "React JS Development",
       "description": "Building high-performance, scalable, and interactive user interfaces using React JS.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/react-js.webp",
       "imageAlt": "React JS Development",
-      "stepsTitle": "React-Based Interfaces",
+      "stepsTitle": "Your Path to Hiring React.js Developers",
       "steps": [
         {
           "title": "Project Planning",
@@ -1119,7 +1142,9 @@ export const HIRE_ROLES = [
         }
       ],
       "ctaLabel": "Start Hiring",
-      "ctaHref": "/hire/application-form"
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
     },
     "expertise": {
       "title": "Our React Developers Expertise",
@@ -1218,9 +1243,11 @@ export const HIRE_ROLES = [
     "developing": {
       "title": "Vue.js Development",
       "description": "Building fast, dynamic, and scalable applications using Vue.js.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
       "image": "/images/hire/vuejs.webp",
       "imageAlt": "Vue.js Development",
-      "stepsTitle": "Vue.js-Based Interfaces",
+      "stepsTitle": "Your Path to Hiring Vue.js Developers",
       "steps": [
         {
           "title": "Project Planning",
@@ -1244,7 +1271,9 @@ export const HIRE_ROLES = [
         }
       ],
       "ctaLabel": "Start Hiring",
-      "ctaHref": "/hire/application-form"
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
     },
     "expertise": {
       "title": "Our React Developers Expertise",
@@ -1288,6 +1317,333 @@ export const HIRE_ROLES = [
       ],
       "image": "https://i.ibb.co/GQQQS9Rn/OBJECTS.png"
     }
+  },
+  {
+    "slug": "nodejs-developer",
+    "hero": {
+      "eyebrow": "HIRE NODE.JS DEVELOPERS",
+      "title": "Hire Dedicated Node.js Developers for Scalable Backend Systems",
+      "description": "Build fast, event-driven APIs and microservices with experienced Node.js engineers. We deliver secure integrations, real-time features, and cloud-ready backends tailored to your product.",
+      "image": "https://i.ibb.co.com/zTXjbc62/Frame-1000005999.png",
+      "ctaLabel": "Hire Node.js Developers Now",
+      "ctaHref": "/hire/application-form"
+    },
+    "whyChoose": {
+      "title": "Why Choose Our Node.js Developers?",
+      "cards": [
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-server",
+          "title": "High-Performance APIs",
+          "description": "Express, NestJS, and Fastify for low-latency REST and GraphQL services.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-bolt",
+          "title": "Event-Driven Architecture",
+          "description": "Real-time apps with WebSockets, queues, and async I/O at scale.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-database",
+          "title": "Data Layer Expertise",
+          "description": "PostgreSQL, MongoDB, Redis, and ORMs matched to your stack.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-shield-alt",
+          "title": "Security First",
+          "description": "Auth, rate limiting, and hardened deployments following best practices.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-cloud",
+          "title": "Cloud Native",
+          "description": "Docker, AWS, and CI/CD pipelines for reliable releases.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-users-cog",
+          "title": "Dedicated Teams",
+          "description": "Engineers who embed with your squad and ship on your roadmap.",
+          "variant": "transparent"
+        }
+      ]
+    },
+    "developing": {
+      "title": "Node.js Backend Development",
+      "description": "Server-side applications powered by JavaScript/TypeScript on the Node.js runtime.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
+      "image": "/images/hire/backend.webp",
+      "imageAlt": "Node.js Development",
+      "stepsTitle": "Your Path to Hiring Node.js Developers",
+      "steps": [
+        {
+          "title": "Architecture & Scope",
+          "description": "Define services, APIs, and data models aligned with product goals and scale targets."
+        },
+        {
+          "title": "API & Service Build",
+          "description": "Implement routes, middleware, validation, and business logic with tested modules."
+        },
+        {
+          "title": "Integrations",
+          "description": "Connect payment, auth, messaging, and third-party systems with stable contracts."
+        },
+        {
+          "title": "Performance & Security",
+          "description": "Optimize queries, caching, and harden endpoints before production traffic."
+        },
+        {
+          "title": "Deploy & Monitor",
+          "description": "Ship to cloud environments with logging, alerts, and ongoing iteration."
+        }
+      ],
+      "ctaLabel": "Start Hiring",
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
+    },
+    "expertise": {
+      "title": "",
+      "cards": [],
+      "image": ""
+    },
+    "technologies": {
+      "title": "Technologies We Work With",
+      "items": []
+    },
+    "exploreRoles": {
+      "title": "Explore More Developer Roles",
+      "links": [
+        {
+          "href": "laravel-developer",
+          "label": "Hire Laravel Developers"
+        },
+        {
+          "href": "python-developer",
+          "label": "Hire Python Developers"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "laravel-developer",
+    "hero": {
+      "eyebrow": "HIRE LARAVEL DEVELOPERS",
+      "title": "Hire Dedicated Laravel Developers for Robust PHP Applications",
+      "description": "Ship maintainable web apps and APIs with Laravel specialists. From admin portals to multi-tenant SaaS, we bring clean architecture, testing, and rapid delivery on PHP.",
+      "image": "https://i.ibb.co.com/zTXjbc62/Frame-1000005999.png",
+      "ctaLabel": "Hire Laravel Developers Now",
+      "ctaHref": "/hire/application-form"
+    },
+    "whyChoose": {
+      "title": "Why Choose Our Laravel Developers?",
+      "cards": [
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-layer-group",
+          "title": "MVC & Clean Code",
+          "description": "Eloquent models, controllers, and services structured for long-term maintenance.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-cogs",
+          "title": "Rich Ecosystem",
+          "description": "Queues, Horizon, Sanctum, and packages chosen for your use case.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-database",
+          "title": "Database Design",
+          "description": "Migrations, indexing, and reporting on MySQL or PostgreSQL.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-lock",
+          "title": "Secure by Default",
+          "description": "Policies, guards, and validation protecting user and business data.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-vial",
+          "title": "Tested Releases",
+          "description": "PHPUnit and Pest coverage for critical paths and regressions.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-users",
+          "title": "Product Partnership",
+          "description": "Collaborative delivery with product and design from sprint to launch.",
+          "variant": "transparent"
+        }
+      ]
+    },
+    "developing": {
+      "title": "Laravel Development",
+      "description": "Full-stack and API-first applications built on the Laravel PHP framework.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
+      "image": "/images/hire/backend.webp",
+      "imageAlt": "Laravel Development",
+      "stepsTitle": "Your Path to Hiring Laravel Developers",
+      "steps": [
+        {
+          "title": "Requirements & Modeling",
+          "description": "Map domains, roles, and workflows into Laravel-friendly module boundaries."
+        },
+        {
+          "title": "Feature Implementation",
+          "description": "Build controllers, jobs, events, and Blade or API resources with conventions."
+        },
+        {
+          "title": "Auth & Permissions",
+          "description": "Implement roles, OAuth, and API tokens suited to your clients."
+        },
+        {
+          "title": "Quality Assurance",
+          "description": "Automated tests, staging checks, and performance tuning before go-live."
+        },
+        {
+          "title": "Hosting & Handoff",
+          "description": "Deploy to Forge, VPS, or cloud with documentation for your team."
+        }
+      ],
+      "ctaLabel": "Start Hiring Now",
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
+    },
+    "expertise": {
+      "title": "",
+      "cards": [],
+      "image": ""
+    },
+    "technologies": {
+      "title": "Technologies We Work With",
+      "items": []
+    },
+    "exploreRoles": {
+      "title": "Explore More Developer Roles",
+      "links": [
+        {
+          "href": "nodejs-developer",
+          "label": "Hire Node.js Developers"
+        },
+        {
+          "href": "python-developer",
+          "label": "Hire Python Developers"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "python-developer",
+    "hero": {
+      "eyebrow": "HIRE PYTHON DEVELOPERS",
+      "title": "Hire Dedicated Python Developers for APIs, Data, and Automation",
+      "description": "Scale backends and data pipelines with Python experts. Django, FastAPI, and scripting for integrations — delivered by engineers who focus on clarity and reliability.",
+      "image": "https://i.ibb.co.com/zTXjbc62/Frame-1000005999.png",
+      "ctaLabel": "Hire Python Developers Now",
+      "ctaHref": "/hire/application-form"
+    },
+    "whyChoose": {
+      "title": "Why Choose Our Python Developers?",
+      "cards": [
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-code",
+          "title": "Modern Frameworks",
+          "description": "Django, FastAPI, and Flask chosen for speed, typing, and team fit.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-chart-line",
+          "title": "Data & Automation",
+          "description": "ETL, reporting, and workflow automation with pandas and task runners.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-plug",
+          "title": "API Integrations",
+          "description": "Reliable connectors to CRMs, payment, and internal systems.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-shield-alt",
+          "title": "Production Ready",
+          "description": "Observability, error handling, and secure configuration management.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-microchip",
+          "title": "ML-Ready Backends",
+          "description": "Serve models and batch jobs when AI features belong in your stack.",
+          "variant": "transparent"
+        },
+        {
+          "icon": "transition-transform transform group-hover:scale-150 duration-500 fa-xl lg:text-3xl text-[#5856d6] fa-solid fa-users-cog",
+          "title": "Flexible Engagement",
+          "description": "Augment your team or own a workstream end to end.",
+          "variant": "transparent"
+        }
+      ]
+    },
+    "developing": {
+      "title": "Python Development",
+      "description": "Backend services, internal tools, and data workflows using Python’s ecosystem.",
+      "hiring_title": "Our Hiring process",
+      "hiring_description": "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
+      "image": "/images/hire/backend.webp",
+      "imageAlt": "Python Development",
+      "stepsTitle": "Your Path to Hiring Python Developers",
+      "steps": [
+        {
+          "title": "Discovery",
+          "description": "Clarify domains, SLAs, and the right framework for APIs vs. batch work."
+        },
+        {
+          "title": "Implementation",
+          "description": "Develop modules, serializers, and jobs with typing and linting standards."
+        },
+        {
+          "title": "Data Layer",
+          "description": "Design schemas, migrations, and queries optimized for your workloads."
+        },
+        {
+          "title": "Testing & Hardening",
+          "description": "pytest coverage, load checks, and security review before release."
+        },
+        {
+          "title": "Deploy & Support",
+          "description": "Containerized or PaaS deploys with monitoring and iterative improvements."
+        }
+      ],
+      "ctaLabel": "Start Hiring",
+      "ctaHref": "/hire/application-form",
+      "hiring_image": "/images/hire/Hiring_Process-Graphics.svg",
+      "hiring_image_alt": "Hiring process illustration"
+    },
+    "expertise": {
+      "title": "",
+      "cards": [],
+      "image": ""
+    },
+    "technologies": {
+      "title": "Technologies We Work With",
+      "items": []
+    },
+    "exploreRoles": {
+      "title": "Explore More Developer Roles",
+      "links": [
+        {
+          "href": "nodejs-developer",
+          "label": "Hire Node.js Developers"
+        },
+        {
+          "href": "laravel-developer",
+          "label": "Hire Laravel Developers"
+        }
+      ]
+    }
   }
 ];
 
@@ -1308,13 +1664,10 @@ export const HIRE_ROLE_SLUGS = [
 ];
 
 function findHireRoleRecord(slug: string): HireRole | undefined {
-  return (
-    HIRE_ROLES.find((r) => r.slug === slug) ||
-    HIRE_STUB_ROLES.find((r) => r.slug === slug)
-  );
+  return HIRE_ROLES.find((r) => r.slug === slug);
 }
 
-/** Category and specialty pages with dedicated copy in roles/stubs. */
+/** Category and specialty pages with dedicated copy in `HIRE_ROLES`. */
 export function getHireRole(slug: string): HireRole | null {
   return findHireRoleRecord(slug) ?? null;
 }

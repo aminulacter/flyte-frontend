@@ -5,6 +5,8 @@ import { resolveExploreRoleHref, techStackSlugForRole } from "@/lib/hire/catalog
 import { resolveSpecialtyExpertiseImage } from "@/lib/hire/catalogue";
 import { TECH_STACK_CARDS } from "@/lib/hire/techStacks";
 import type { HireRole } from "@/lib/types";
+import type { CustomTeam } from "@/lib/types";
+import { getCustomTeams } from "@/lib/hire/customTeams";
 import {
   ClutchReviewsSection,
   DreamTeamCta,
@@ -13,7 +15,10 @@ import {
   TrustedLeadersSection,
 } from "@/components/hire/HireSharedSections";
 import "./section-title.css";
+import "./custom-teams.css";
 const imageAlt = "Hire Role Image";
+const hiringImageAlt = "Hiring Process Image";
+
 function HireRoleHero({ hero }: { hero: HireRole["hero"] }) {
   const { eyebrow, title, description, image, ctaLabel, ctaHref } = hero;
   return (
@@ -80,20 +85,40 @@ function WhyChooseSection({ section }) {
   );
 }
 
-function DevelopingSection({ developing }) {
-  const { title, description, image, imageAlt, stepsTitle, steps, ctaLabel, ctaHref } = developing;
+function DevelopingSpecialtySection({ developing }: { developing: HireRole["developing"] }) {
+  const {
+    title,
+    description,
+    hiring_title = "Our Hiring process",
+    hiring_description = "From understanding your needs to onboarding the perfect team, we ensure a seamless hiring process customized to your project.",
+    imageAlt,
+    stepsTitle,
+    steps,
+    ctaLabel,
+    ctaHref,
+    hiring_image,
+    hiring_image_alt,
+  } = developing;
+  const hiringGraphicSrc = hiring_image?.trim();
   return (
     <div className="bg-white py-5 lg:py-10">
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <div>
           <h2 className="hire-section-title mb-2 w-full text-[#181a2a] lg:mb-5 lg:w-2/3">
-            {title}
+            {hiring_title}
           </h2>
-          <p className="text-[#12094a] mb-5">{description}</p>
-          <div className="w-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            {/* <img className="w-full object-cover lg:h-[340px]" src={image} alt={imageAlt || title} /> */}
-          </div>
+          <p className="text-[#12094a] mb-5">{hiring_description}</p>
+
+          {hiringGraphicSrc ? (
+            <div className="w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="w-full object-contain lg:max-h-[340px]"
+                src={hiringGraphicSrc}
+                alt={hiring_image_alt?.trim() || imageAlt || title}
+              />
+            </div>
+          ) : null}
         </div>
         <div>
           <h2 className="hire-section-title mb-4 text-[#181a2a] lg:mb-8">{stepsTitle}</h2>
@@ -221,6 +246,73 @@ function ExploreRolesSection({ exploreRoles }) {
     </div>
   );
 }
+function CustomTeamIconImage({ team }: { team: CustomTeam }) {
+  const { src, width, height } = team.icon;
+  return <img className="custom-teams__icon" src={src} alt="" width={width} height={height} />;
+}
+
+function CustomTeamCard({ team }: { team: CustomTeam }) {
+  if (team.mostPopular) {
+    return (
+      <div className="custom-teams__card custom-teams__card--popular">
+        <img
+          className="custom-teams__pattern"
+          src="/images/hire/custom-teams/card-pattern.svg"
+          alt=""
+          width={673.479}
+          height={600}
+        />
+        <span className="custom-teams__badge">Most Popular</span>
+        <CustomTeamIconImage team={team} />
+        <div className="custom-teams__copy">
+          <h3 className="custom-teams__title">{team.title}</h3>
+          <p className="custom-teams__desc">{team.description}</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="custom-teams__card">
+      <CustomTeamIconImage team={team} />
+      <div className="custom-teams__copy">
+        <h3 className="custom-teams__title">{team.title}</h3>
+        <p className="custom-teams__desc">{team.description}</p>
+      </div>
+      {team.labels.length > 0 && (
+        <ul className="custom-teams__labels">
+          {team.labels.map((label) => (
+            <li key={label.title} className="custom-teams__label">
+              {team.checkIcon && (
+                <img className="custom-teams__check" src={team.checkIcon} alt="" width={24} height={24} />
+              )}
+              <span>{label.title}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function CustomTeamsSection() {
+  const customTeams = getCustomTeams();
+  return (
+    <section className="custom-teams">
+      <div className="custom-teams__inner container">
+        <div className="custom-teams__header">
+          <p className="custom-teams__eyebrow">Custom Team</p>
+          <h2 className="custom-teams__heading">Flexible Team Sizes for Every Project</h2>
+        </div>
+        <div className="custom-teams__table">
+          {customTeams.map((team) => (
+            <CustomTeamCard key={team.title} team={team} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /** Shared hire sections — composed differently in category vs specialty page wrappers. */
 export function HireRoleSections({ role }: { role: HireRole }) {
@@ -231,7 +323,7 @@ export function HireRoleSections({ role }: { role: HireRole }) {
       {/* <TechnologiesSection slug={role.slug} technologies={role.technologies} />
       <ExploreRolesSection exploreRoles={role.exploreRoles} /> */}
       <DreamTeamCta />
-      <DevelopingSection developing={role.developing} />
+      <DevelopingSpecialtySection developing={role.developing} />
       <ExpertiseSection expertise={role.expertise} slug={role.slug} />
     </>
   );
@@ -243,6 +335,7 @@ export function HireRoleSharedTail() {
 
       <FiveStepsSection />
       <EngagementModelsSection />
+      <CustomTeamsSection />
       <TrustedLeadersSection />
       <ClutchReviewsSection />
       <ContactSection />

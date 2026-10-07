@@ -165,3 +165,4 @@ export function withSpecialtyExpertise(role: HireRole, slug: string): HireRole {
   if (!expertise) return { ...role, slug };
   return { ...role, slug, expertise };
 }
+

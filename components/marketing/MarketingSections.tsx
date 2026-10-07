@@ -93,9 +93,8 @@ export function DevelopingSection({ developing }: { developing: DevelopingConten
                 <div className="flex gap-3.5">
                   {steps.length - 1 > i && <span className="w-0.5 h-auto mx-3 bg-[#d3d3d3]" />}
                   <p
-                    className={`opacity-70 text-[#3b3c4e] text-sm ${
-                      steps.length - 1 === i ? "ml-10" : ""
-                    }`}
+                    className={`opacity-70 text-[#3b3c4e] text-sm ${steps.length - 1 === i ? "ml-10" : ""
+                      }`}
                   >
                     {step.description}
                   </p>
@@ -166,20 +165,48 @@ export function UseCasesSection({ useCases }: { useCases: UseCasesSectionData })
   );
 }
 
+const WHY_BLOB_FILLS = ["#EFF6F3", "#e6f3e5", "#fdf2c8", "#ebeff3"];
+
+function WhyChooseBlob({ fill }: { fill: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="76" viewBox="0 0 90 76" fill="none" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.049542 43.6351C-1.04201 30.848 16.1633 25.4136 26.0494 17.2041C34.4609 10.2191 41.6132 0.666969 52.5392 0.0472946C63.8936 -0.59668 74.822 5.40157 82.2221 14.0182C89.1393 22.0727 90.1988 33.0305 89.9727 43.6351C89.7528 53.9473 88.9658 65.4617 80.9854 72.018C73.3493 78.2915 62.3598 75.5688 52.5392 74.3888C44.3198 73.4013 37.3467 70.0998 30.2077 65.917C18.9943 59.3471 1.15311 56.563 0.049542 43.6351Z"
+        fill={fill}
+      />
+    </svg>
+  );
+}
+
 export function IndustryWhySection({ section }: { section: WhyChooseSection }) {
   return (
     <div className="bg-white">
-      <div className="container pt-10 lg:pt-20 pb-10">
-        <h2 className="text-[#060b13] text-xl lg:text-3xl font-semibold mb-3">{section.title}</h2>
-        {section.description ? (
-          <p className="text-gray-600 text-sm mb-8 max-w-3xl">{section.description}</p>
-        ) : null}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="container py-5 lg:py-10 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="col-span-1">
+          <h2 className="text-[#121212] text-xl lg:text-[32px] font-semibold leading-10 pb-5">{section.title}</h2>
+          {/* <div className="w-20 h-[3px] relative bg-[#5856D6] my-3" /> */}
+          {section.description ? <p className="text-[#2d2e2e]">{section.description}</p> : null}
+        </div>
+        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-10">
           {section.cards.map((card, i) => (
-            <div key={i} className="relative p-6 bg-[#f4f5f9] rounded-xl min-h-[180px] group hover:bg-blue-50 transition duration-500">
-              <i className={`${card.icon} text-[#5856d6]`} />
-              <h3 className="text-gray-800 text-lg font-semibold mt-16 mb-2">{card.title}</h3>
-              <p className="text-gray-600 text-sm">{card.description}</p>
+            <div
+              key={card.title}
+              className="h-[190px] flex-col justify-center items-center lg:justify-start lg:items-start gap-4 lg:gap-8 inline-flex"
+            >
+              <div className="relative w-[90px] h-[76px] hover:rotate-45 duration-1000">
+                <WhyChooseBlob fill={WHY_BLOB_FILLS[i % WHY_BLOB_FILLS.length]} />
+                <i className={card.icon} />
+              </div>
+              <div>
+                <h4 className="text-[#3a4e39] text-center lg:text-start font-semibold mb-2 lg:mb-3">
+                  {card.title}
+                </h4>
+                <p className="text-[#2d2e2e] text-sm text-center lg:text-start w-[80%] mx-auto lg:mx-0">
+                  {card.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -194,21 +221,12 @@ export function ExpertiseCardsSection({ expertise }: { expertise: ExpertiseSecti
       <div className="container pt-10 lg:pb-10">
         <h2 className="text-[#060b13] text-xl lg:text-3xl font-semibold mb-3 lg:mb-6">{expertise.title}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:col-span-2">
-            {expertise.cards.map((card, i) => (
-              <FeatureCard key={i} card={card} />
-            ))}
-          </div>
-          {expertise.image ? (
-            <div className="lg:col-span-1">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="lg:max-w-[391px] max-h-[341px] object-cover"
-                src={expertise.image}
-                alt="Expertise"
-              />
-            </div>
-          ) : null}
+
+          {expertise.cards.map((card, i) => (
+            <FeatureCard key={i} card={card} />
+          ))}
+
+
         </div>
       </div>
     </div>
@@ -219,9 +237,16 @@ export function TrendsSection({ trends }: { trends: TrendsSectionData }) {
   if (!trends) return null;
   return (
     <div className="bg-white py-10 lg:py-16">
-      <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 className="text-[#060b13] text-xl lg:text-3xl font-semibold mb-8">{trends.title}</h2>
+      <div className="container grid gap-10 items-center">
+        <h2 className="text-[#060b13] text-xl lg:text-3xl font-semibold mb-2">{trends.title}</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+          {trends.image ? (
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="w-full rounded-xl object-cover" src={trends.image} alt={trends.title} />
+            </div>
+          ) : null}
           <div className="space-y-6">
             {trends.items.map((item, i) => (
               <div key={i} className="flex gap-4">
@@ -234,12 +259,7 @@ export function TrendsSection({ trends }: { trends: TrendsSectionData }) {
             ))}
           </div>
         </div>
-        {trends.image ? (
-          <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="w-full rounded-xl object-cover" src={trends.image} alt={trends.title} />
-          </div>
-        ) : null}
+
       </div>
     </div>
   );
@@ -268,9 +288,8 @@ export function ServiceLandingRow({ item }: { item: ServiceLandingItem }) {
         {item.images?.map((img, i) => (
           <div
             key={i}
-            className={`w-40 md:w-60 h-[120px] md:h-[155px] ${
-              i === 0 ? "md:ml-32 -mb-12" : i === 1 ? "mr-32" : "md:ml-32 -mt-12"
-            }`}
+            className={`w-40 md:w-60 h-[120px] md:h-[155px] ${i === 0 ? "md:ml-32 -mb-12" : i === 1 ? "mr-32" : "md:ml-32 -mt-12"
+              }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="w-full h-full cover border" src={img.src} alt={img.alt} />

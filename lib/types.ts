@@ -30,7 +30,7 @@ export interface Blog {
   date?: string;
   view_count?: number;
   admin?: { name?: string; profile?: string; image?: string };
-  blog_section?: Array<{ id?: string | number; blog_section_title: string; [key: string]: unknown }>;
+  blog_section?: Array<{ id?: string | number; blog_section_title: string;[key: string]: unknown }>;
   [key: string]: unknown;
 }
 
@@ -158,7 +158,7 @@ export interface AboutUsData {
 export interface CaseStudiesPageContent {
   contents?: Array<Record<string, unknown>>;
   images?: Array<string | { image?: string }>;
-  categories?: Array<{ id?: number | null; name?: string; type?: string; [key: string]: unknown }>;
+  categories?: Array<{ id?: number | null; name?: string; type?: string;[key: string]: unknown }>;
 }
 
 export interface FooterLinkItem {
@@ -220,12 +220,16 @@ export interface StepItem {
 export interface DevelopingContent {
   title: string;
   description: string;
+  hiring_title?: string;
+  hiring_description?: string;
   image: string;
   imageAlt?: string;
   stepsTitle: string;
   steps: StepItem[];
   ctaLabel?: string;
   ctaHref?: string;
+  hiring_image?: string;
+  hiring_image_alt?: string;
 }
 
 export interface ProcessSection {
@@ -278,12 +282,20 @@ export interface ServiceDetail {
   useCases: UseCasesSectionData;
 }
 
+export interface IndustryCtaContent {
+  title: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
 export interface IndustryDetail {
   slug: string;
   hero: HeroContent;
   whyChoose: WhyChooseSection;
   expertise: ExpertiseSection;
   trends: TrendsSectionData;
+  cta: IndustryCtaContent;
 }
 
 export interface ServiceLandingItem {
@@ -296,12 +308,23 @@ export interface ServiceLandingItem {
   reversed?: boolean;
 }
 
+export interface IndustryLandingQuote {
+  text: string;
+  name: string;
+  role: string;
+  avatar: string;
+}
+
 export interface IndustryLandingItem {
   slug: string;
   title: string;
   description: string;
-  image?: string;
+  icon: string;
   href: string;
+  quote: IndustryLandingQuote;
+  solutionsTitle: string;
+  solutions: string[];
+  exploreLabel: string;
 }
 
 export interface ExploreRoleLink {
@@ -393,4 +416,24 @@ export function unwrapProduct(data: ProductApiResponse | null | undefined): Prod
 export function unwrapBlogList(data: BlogList | null | undefined): Blog[] {
   if (!data) return [];
   return Array.isArray(data) ? data : data.data || [];
+}
+export interface ExperienceLabel {
+  title: string;
+}
+
+/** Custom team option card on hire specialty pages (`lib/hire/customTeams.ts`). */
+export interface CustomTeamIcon {
+  src: string;
+  width: number;
+  height: number;
+}
+
+export interface CustomTeam {
+  title: string;
+  description: string;
+  icon: CustomTeamIcon;
+  /** Check icon shown before each label. */
+  checkIcon?: string;
+  labels: ExperienceLabel[];
+  mostPopular?: boolean;
 }

@@ -157,7 +157,10 @@ function CompanyDropdown({ menu, light }: { menu: typeof COMPANY_MENU; light: bo
 
 export default function Header() {
   const pathname = usePathname();
-  const light = pathname.startsWith("/hire/") || pathname.startsWith("/hire-sp/");
+  const light =
+    pathname.startsWith("/hire/") ||
+    pathname.startsWith("/hire-sp/") ||
+    pathname.startsWith("/industries/");
   const tone = light ? "text-black" : "group-hover:text-black lg:text-white";
   const [hire, industries, services, products] = MEGA_MENUS;
   return (

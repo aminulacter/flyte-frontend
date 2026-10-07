@@ -1,0 +1,213 @@
+/* Custom Teams section (Figma node 2:48183).
+   Global CSS forces font-weight 400 !important, so weights must override it. */
+.custom-teams {
+  background: #f9f9ff;
+  padding: 40px 0;
+}
+
+.custom-teams__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.custom-teams__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  color: #3b3c4e;
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.custom-teams__eyebrow {
+  margin: 0;
+  font-size: 16px;
+  line-height: normal;
+  opacity: 0.7;
+}
+
+.custom-teams__heading {
+  margin: 0;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 32px;
+  line-height: normal;
+  color: #3b3c4e;
+}
+
+.custom-teams__table {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1056px;
+}
+
+.custom-teams__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Open Sans", sans-serif !important;
+}
+
+.custom-teams__icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.custom-teams__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.custom-teams__title {
+  margin: 0;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 24px;
+  line-height: normal;
+  color: #231d4f;
+}
+
+.custom-teams__desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: normal;
+  color: #3b3c4e;
+}
+
+.custom-teams__labels {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.custom-teams__label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  line-height: normal;
+  color: #666;
+}
+
+.custom-teams__check {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Most popular card */
+.custom-teams__card--popular {
+  overflow: hidden;
+  gap: 32px;
+  padding: 52px 33px 40px;
+  border-radius: 28.895px;
+  background: linear-gradient(to bottom, #8d8bff, #5856d6);
+  box-shadow: 0 4px 15px rgba(3, 25, 45, 0.25);
+}
+
+.custom-teams__pattern {
+  position: absolute;
+  top: -87.5px;
+  left: 210.05px;
+  max-width: none;
+  pointer-events: none;
+}
+
+.custom-teams__badge {
+  position: absolute;
+  top: 20.83px;
+  right: 22.24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 134.47px;
+  height: 28.125px;
+  border-radius: 15px;
+  background: #092998;
+  font-family: "Inter", "Open Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 11px;
+  letter-spacing: 0.926px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.custom-teams__card--popular .custom-teams__copy {
+  position: relative;
+  gap: 20px;
+}
+
+.custom-teams__card--popular .custom-teams__icon {
+  position: relative;
+}
+
+.custom-teams__card--popular .custom-teams__title {
+  font-weight: 700 !important;
+  color: #fff;
+}
+
+.custom-teams__card--popular .custom-teams__desc {
+  color: #fff;
+}
+
+/* Desktop: white panel with the popular card raised above it. */
+@media (min-width: 1024px) {
+  .custom-teams__table {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+    height: 500px;
+    margin-top: 48.5px;
+    padding: 0 48px 0 47px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-teams__card {
+    width: 257.835px;
+    padding: 51.5px 0 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .custom-teams__card--popular {
+    width: 324.515px;
+    height: 500px;
+    margin-top: -48.5px;
+    gap: 0;
+    padding: 0;
+    border-radius: 28.895px;
+    background: linear-gradient(to bottom, #8d8bff, #5856d6);
+    box-shadow: 0 4px 15px rgba(3, 25, 45, 0.25);
+  }
+
+  .custom-teams__card--popular .custom-teams__icon {
+    position: absolute;
+    top: 51.83px;
+    left: 33.29px;
+  }
+
+  .custom-teams__card--popular .custom-teams__copy {
+    position: absolute;
+    top: 120.83px;
+    left: 33.34px;
+    width: 257.835px;
+  }
+}

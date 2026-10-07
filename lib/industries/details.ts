@@ -101,6 +101,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific education Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -204,6 +210,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific enterprise Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -307,6 +319,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific fintech Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -410,6 +428,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific logistics Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -513,6 +537,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific media & entertainment Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -616,6 +646,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific medical & healthcare Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -719,6 +755,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific NGO Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -822,6 +864,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific real estate Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -925,6 +973,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific retail & manufacturing Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -1028,6 +1082,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific startup Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   },
   {
@@ -1131,6 +1191,12 @@ export const INDUSTRY_DETAILS = [
           "description": "Embedded finance integrates financial services into non-financial platforms, such as e-commerce sites, ride-sharing apps, and retail stores. This trend allows businesses to offer seamless payment options, loans, and insurance directly within their platforms, enhancing customer experience and driving revenue."
         }
       ]
+    },
+    "cta": {
+      "title": "Need a specific technology company Solution?",
+      "description": "Let's discuss your requirements",
+      "ctaLabel": "Book A Consultation",
+      "ctaHref": "/schedule-consultation"
     }
   }
 ];
