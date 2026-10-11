@@ -25,7 +25,7 @@ export default async function ProductsPage() {
       <div>
         <div className="flex-col gap-2 w-full flex justify-center items-center my-8">
           <p className="pb-2.5 text-lg text-btnColor font-['DM_Sans'] lg:px-0">Our Products</p>
-          <h1 className="lg:w-full text-[#15161B] text-lg lg:text-3xl px-0 font-semibold text-start lg:leading-[50px]">
+          <h1 className="lg:w-full text-[#15161B] text-lg lg:text-3xl px-0 font-semibold text-start lg:text-center lg:leading-[50px]">
             Smart Solutions That Simplify Your Operations
           </h1>
         </div>

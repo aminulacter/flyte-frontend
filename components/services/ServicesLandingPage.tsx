@@ -1,10 +1,7 @@
 import ContactSection from "@/components/ContactSection";
 import { ClutchReviewsSection } from "@/components/hire/HireSharedSections";
-import {
-  MarketingHero,
-  normalizeServiceHref,
-  ServiceLandingRow,
-} from "@/components/marketing/MarketingSections";
+import { normalizeServiceHref, ServiceLandingRow } from "@/components/marketing/MarketingSections";
+import { ServiceLandingHero } from "@/components/services/ServiceLandingHero";
 import { SERVICES_LANDING } from "@/lib/services/landing";
 
 export default function ServicesLandingPage() {
@@ -16,7 +13,7 @@ export default function ServicesLandingPage() {
 
   return (
     <div>
-      <MarketingHero hero={hero} widthClass="lg:w-[50%]" />
+      <ServiceLandingHero hero={hero} />
       <div className="container mb-5">
         <div className="flex-col gap-2 w-full flex justify-center items-center my-8">
           <p className="pb-2.5 text-lg text-btnColor font-['DM_Sans'] lg:px-0">Our Services</p>

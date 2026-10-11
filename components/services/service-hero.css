@@ -1,0 +1,25 @@
+/* Service detail hero. Separate from hire and industry titles so this page can change on its own.
+   Global CSS forces font-weight 400 !important, so weights must override it. */
+.service-hero-eyebrow {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #5856d6;
+}
+
+.service-hero-title {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: 0;
+}
+
+.service-hero-desc {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0;
+}

@@ -4,46 +4,12 @@ import type {
   DevelopingContent,
   ExpertiseSection,
   FeatureCard,
-  HeroContent,
   ProcessSection,
   ServiceLandingItem,
   TrendsSectionData,
   UseCasesSectionData,
   WhyChooseSection,
 } from "@/lib/types";
-
-export function MarketingHero({ hero, widthClass = "lg:w-[60%]" }: { hero: HeroContent; widthClass?: string }) {
-  const { eyebrow, title, description, image, ctaLabel, ctaHref } = hero;
-  return (
-    <div
-      className="pt-10 lg:pt-44 relative lg:min-h-[610px] bg-cover bg-center"
-      style={{ backgroundImage: `url(${image})` }}
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-80" />
-      <div className="container pb-8 lg:pb-16 relative">
-        <div className={`w-full ${widthClass}`}>
-          <div className="space-y-4 lg:space-y-6">
-            <h4 className="text-[#6ec1ff] text-base lg:text-lg uppercase font-bold tracking-wide flex lg:items-center gap-2">
-              <div className="w-[22px] h-0.5 bg-[#6ec1ff] mt-3 lg:mt-0" /> {eyebrow}
-            </h4>
-            <h1 className="text-white text-2xl lg:text-4xl font-bold lg:leading-[46px]">{title}</h1>
-            <p className="text-[#dddddd] text-sm leading-snug">{description}</p>
-          </div>
-          {ctaLabel && ctaHref ? (
-            <div className="mt-8 lg:mt-12">
-              <Link
-                href={ctaHref}
-                className="w-fit inline-block px-8 py-3 bgGradientNevyBlue rounded-md text-white text-base font-semibold"
-              >
-                {ctaLabel}
-              </Link>
-            </div>
-          ) : null}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function FeatureCard({ card }: { card: FeatureCard }) {
   const bg = card.variant === "filled" ? "bg-gray-200" : "bg-transparent";
@@ -238,22 +204,35 @@ export function TrendsSection({ trends }: { trends: TrendsSectionData }) {
   return (
     <div className="bg-white py-10 lg:py-16">
       <div className="container grid gap-10 items-center">
-        <h2 className="text-[#060b13] text-xl lg:text-3xl font-semibold mb-2">{trends.title}</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
 
           {trends.image ? (
-            <div>
+            <div className="col-span-1 flex flex-col gap-8">
+              <h2 className="text-[#060b13] text-xl lg:text-3xl font-semibold mb-2">{trends.title}</h2>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="w-full rounded-xl object-cover" src={trends.image} alt={trends.title} />
             </div>
           ) : null}
-          <div className="space-y-6">
+          <div className="col-span-1 lg:col-span-2 space-y-1">
             {trends.items.map((item, i) => (
-              <div key={i} className="flex gap-4">
-                <span className="text-[#5856d6] text-2xl font-bold shrink-0">{item.number}</span>
-                <div>
-                  <h3 className="text-[#060b13] text-lg font-semibold mb-1">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
+              <div key={i} className="px-0 py-2 border-b-2" style={{ borderColor: "rgb(88 86 214 / 20%)" }}>
+                <div className="flex gap-4 items-center">
+                  <div className="">
+                    <span className="text-[#5856d6] text-2xl font-bold shrink-0">{item.number}</span>
+                  </div>
+
+
+                  <div className="flex flex-col gap-1 border-l-2 py-0 pl-4" style={{ borderColor: "rgb(88 86 214 / 20%)" }}>
+                    <p
+                      className="text-[#5856d6] font-semibold mb-1 text-xl"
+                      style={{ lineHeight: "120%" }}
+                    >
+                      {item.title}
+                    </p>
+                    <p className="text-gray-800 text-base">{item.description}</p>
+                  </div>
+
                 </div>
               </div>
             ))}

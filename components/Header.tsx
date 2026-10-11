@@ -160,7 +160,8 @@ export default function Header() {
   const light =
     pathname.startsWith("/hire/") ||
     pathname.startsWith("/hire-sp/") ||
-    pathname.startsWith("/industries/");
+    pathname.startsWith("/industries/") ||
+    pathname.startsWith("/services/");
   const tone = light ? "text-black" : "group-hover:text-black lg:text-white";
   const [hire, industries, services, products] = MEGA_MENUS;
   return (

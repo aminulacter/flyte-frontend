@@ -8,10 +8,10 @@ import {
 import TechnologyStacksSection from "@/components/hire/TechnologyStacksSection";
 import {
   DevelopingSection,
-  MarketingHero,
   ProcessCardsSection,
   UseCasesSection,
 } from "@/components/marketing/MarketingSections";
+import { ServiceHero } from "@/components/services/ServiceHero";
 import { getSoftwareSolutions } from "@/lib/api";
 import type { ServiceDetail } from "@/lib/types";
 
@@ -20,7 +20,7 @@ export default async function ServiceDetailPage({ service }: { service: ServiceD
 
   return (
     <div>
-      <MarketingHero hero={service.hero} />
+      <ServiceHero hero={service.hero} />
       <DevelopingSection developing={service.developing} />
       <ProcessCardsSection section={service.whyProcess} />
       <DreamTeamCta />
