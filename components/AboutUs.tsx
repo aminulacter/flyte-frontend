@@ -8,8 +8,8 @@ export default function AboutUs({ about }: AboutUsProps) {
 
   return (
     <div>
-      <div className="mt-5 lg:mt-40">
-        <span className="container flex flex-col items-center my-2 md:my-7">
+      <div className="light-page-offset">
+        <span className="container flex flex-col items-center mb-2 md:mb-7">
           <h1 className="w-full text-[#15161B] text-lg lg:text-4xl font-semibold text-center">
             {title}
           </h1>

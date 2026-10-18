@@ -1,8 +1,10 @@
 import Script from "next/script";
 import "@/components/ui/buttons.css";
+import "@/components/light-page-offset.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientInit from "@/components/ClientInit";
+import { getNavigation } from "@/lib/api";
 
 const SITE_URL = "https://flytesolutions.com";
 const GTM_ID = "GTM-NJZ2XR6F";
@@ -70,7 +72,9 @@ const STYLES = [
 
 import type { LayoutProps } from "@/lib/types";
 
-export default function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children }: LayoutProps) {
+  const navigation = await getNavigation();
+
   return (
     <html lang="en">
       <head>
@@ -96,7 +100,7 @@ export default function RootLayout({ children }: LayoutProps) {
           />
         </noscript>
 
-        <Header />
+        <Header megaMenus={navigation?.megaMenus} companyMenu={navigation?.companyMenu} />
         <main>{children}</main>
         <Footer />
 

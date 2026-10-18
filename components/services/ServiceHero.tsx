@@ -6,7 +6,7 @@ import "./service-hero.css";
 export function ServiceHero({ hero }: { hero: HeroContent }) {
   const { eyebrow, title, description, image, ctaLabel, ctaHref } = hero;
   return (
-    <section className="service-hero relative pt-10 lg:min-h-[610px] lg:pt-44">
+    <section className="service-hero light-page-offset relative lg:min-h-[610px]">
       <div className="service-hero__inner container relative pb-8 lg:pb-16">
         <div className="service-hero__grid grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
           <div className="service-hero__content">

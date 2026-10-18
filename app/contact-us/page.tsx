@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ContactUsPage() {
   return (
-    <div className="lg:mt-24">
+    <div className="light-page-offset">
       <ContactSection />
     </div>
   );

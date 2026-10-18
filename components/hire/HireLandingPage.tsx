@@ -16,6 +16,7 @@ import {
   HIRE_SCENARIOS,
   HIRE_SCENARIOS_TITLE,
 } from "@/lib/hire/landing";
+import type { HeroContent } from "@/lib/types";
 
 const ADVANTAGE_ICONS = [
   "fa-solid fa-wallet",
@@ -36,8 +37,15 @@ function ScenarioCheckIcon() {
   );
 }
 
-export default function HireLandingPage() {
-  const hero = HIRE_LANDING_HERO;
+export default function HireLandingPage({
+  hero = HIRE_LANDING_HERO,
+  advantages = HIRE_ADVANTAGES,
+  advantagesTitle = HIRE_ADVANTAGES_TITLE,
+}: {
+  hero?: HeroContent;
+  advantages?: typeof HIRE_ADVANTAGES;
+  advantagesTitle?: string;
+} = {}) {
 
   return (
     <div>
@@ -71,10 +79,10 @@ export default function HireLandingPage() {
       <div className="bg-white pb-10">
         <div className="container">
           <h2 className="hire-section-title mx-auto max-w-[492px] py-5 text-center text-black md:py-10">
-            {HIRE_ADVANTAGES_TITLE}
+            {advantagesTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {HIRE_ADVANTAGES.map((item, i) => (
+            {advantages.map((item, i) => (
               <div
                 key={item.title}
                 className="h-[281px] p-5 bg-[#f4f5f9] hover:bg-blue-100 transition duration-500 rounded-xl grid grid-rows-3 place-items-center group"

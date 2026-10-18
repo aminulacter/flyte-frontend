@@ -11,6 +11,7 @@ export async function generateStaticParams() {
 
 import type { SlugPageProps } from "@/lib/types";
 import { unwrapProduct } from "@/lib/types";
+import { ClutchReviewsSection } from "@/components/hire/HireSharedSections";
 
 export async function generateMetadata({ params }: SlugPageProps) {
   const { slug } = await params;
@@ -34,6 +35,7 @@ export default async function ProductDetailPage({ params }: SlugPageProps) {
   return (
     <div>
       <ProductDetail product={product} />
+      <ClutchReviewsSection />
       <ContactSection />
     </div>
   );

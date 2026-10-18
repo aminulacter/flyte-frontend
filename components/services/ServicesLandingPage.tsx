@@ -3,9 +3,15 @@ import { ClutchReviewsSection } from "@/components/hire/HireSharedSections";
 import { normalizeServiceHref, ServiceLandingRow } from "@/components/marketing/MarketingSections";
 import { ServiceLandingHero } from "@/components/services/ServiceLandingHero";
 import { SERVICES_LANDING } from "@/lib/services/landing";
+import type { ServiceLandingItem } from "@/lib/types";
+import type { HeroContent } from "@/lib/types";
 
-export default function ServicesLandingPage() {
-  const { hero, items } = SERVICES_LANDING;
+export default function ServicesLandingPage({
+  content,
+}: {
+  content?: { hero: HeroContent; items: ServiceLandingItem[] } | null;
+} = {}) {
+  const { hero, items } = content?.hero ? content : SERVICES_LANDING;
   const rows = items.map((item) => ({
     ...item,
     href: normalizeServiceHref(item.href),

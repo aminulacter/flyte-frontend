@@ -1,4 +1,7 @@
 import HireLandingPage from "@/components/hire/HireLandingPage";
+import { getHireIndex } from "@/lib/api";
+import { pageToLanding } from "@/lib/cms";
+import type { HeroContent } from "@/lib/types";
 
 export const metadata = {
   title: "Hire | Flyte Solutions Ltd.",
@@ -7,6 +10,14 @@ export const metadata = {
   alternates: { canonical: "/hire" },
 };
 
-export default function HirePage() {
-  return <HireLandingPage />;
+export default async function HirePage() {
+  const index = await getHireIndex();
+  const landing = pageToLanding<{ hero: HeroContent; items: Array<{ title: string; description: string }> }>(index?.landing);
+  return (
+    <HireLandingPage
+      hero={landing?.hero}
+      advantages={landing?.items?.length ? landing.items : undefined}
+      advantagesTitle={landing && "title" in landing ? String(landing.title || "") : undefined}
+    />
+  );
 }

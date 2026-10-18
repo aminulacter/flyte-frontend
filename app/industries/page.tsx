@@ -1,4 +1,7 @@
 import IndustriesLandingPage from "@/components/industries/IndustriesLandingPage";
+import { getIndustryIndex } from "@/lib/api";
+import { pageToLanding } from "@/lib/cms";
+import type { HeroContent, IndustryLandingItem } from "@/lib/types";
 
 export const metadata = {
   title: "Industry | Flyte Solutions Ltd.",
@@ -9,6 +12,8 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return <IndustriesLandingPage />;
+export default async function Page() {
+  const index = await getIndustryIndex();
+  const content = pageToLanding<{ hero: HeroContent; items: IndustryLandingItem[] }>(index?.landing);
+  return <IndustriesLandingPage content={content} />;
 }

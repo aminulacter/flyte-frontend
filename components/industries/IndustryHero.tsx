@@ -5,7 +5,7 @@ import "./industry-hero.css";
 export function IndustryHero({ hero }: { hero: HeroContent }) {
   const { eyebrow, title, description, image, ctaLabel, ctaHref } = hero;
   return (
-    <section className="industry-hero relative pt-10 lg:min-h-[610px] lg:pt-44">
+    <section className="industry-hero light-page-offset relative lg:min-h-[610px]">
       <div className="industry-hero__inner container relative pb-8">
         <div className="industry-hero__grid grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
           <div className="industry-hero__content">

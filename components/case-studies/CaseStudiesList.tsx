@@ -3,10 +3,22 @@
 import { useEffect, useRef, useState } from "react";
 import CaseStudyCard from "./CaseStudyCard";
 import { getCaseStudiesByCategory } from "@/lib/api";
+import "./case-studies-tabs.css";
 
 const ALL = { id: null, name: "All Industries", type: "" };
 
 import type { CaseStudy, PaginatedResponse } from "@/lib/types";
+
+type CategoryTab = { id?: number | null; name?: string; type?: string };
+
+function isAllCategory(cat: CategoryTab) {
+  if (cat.id == null || cat.id === 0) return true;
+  return (cat.name || "").trim().toLowerCase() === "all industries";
+}
+
+function categoryKey(cat: CategoryTab) {
+  return isAllCategory(cat) ? "all" : String(cat.id);
+}
 
 function Pagination({
   currentPage,
@@ -95,15 +107,32 @@ export default function CaseStudiesList({
   categories = [],
   initial,
 }: {
-  categories?: Array<{ id?: number | null; name?: string; type?: string }>;
+  categories?: CategoryTab[];
   initial?: PaginatedResponse<CaseStudy>;
 }) {
   const tabs = categories.length ? categories : [ALL];
-  const [active, setActive] = useState(tabs[0] || ALL);
+  const [selected, setSelected] = useState<CategoryTab[]>(() => [tabs[0] || ALL]);
   const [page, setPage] = useState(1);
   const [payload, setPayload] = useState(initial || { data: [], current_page: 1, last_page: 1 });
   const [loading, setLoading] = useState(false);
   const isFirst = useRef(true);
+  const selectedKey = selected.map(categoryKey).join(",");
+
+  function toggleCategory(cat: CategoryTab) {
+    setSelected((current) => {
+      if (isAllCategory(cat)) {
+        const onlyAll = current.length === 1 && current.some(isAllCategory);
+        return onlyAll ? [] : [cat];
+      }
+
+      const withoutAll = current.filter((item) => !isAllCategory(item));
+      const key = categoryKey(cat);
+      const exists = withoutAll.some((item) => categoryKey(item) === key);
+      if (exists) return withoutAll.filter((item) => categoryKey(item) !== key);
+      return [...withoutAll, cat];
+    });
+    setPage(1);
+  }
 
   useEffect(() => {
     // Skip the very first render — the server already provided `initial`.
@@ -111,9 +140,22 @@ export default function CaseStudiesList({
       isFirst.current = false;
       return;
     }
+    if (selected.length === 0) {
+      setPayload({ data: [], current_page: 1, last_page: 1 });
+      setLoading(false);
+      return;
+    }
+
+    const categoryIds = selected
+      .filter((cat) => !isAllCategory(cat) && cat.id != null)
+      .map((cat) => Number(cat.id));
+
     let cancelled = false;
     setLoading(true);
-    getCaseStudiesByCategory({ categoryId: active?.id ?? 0, page })
+    const request = categoryIds.length > 0
+      ? getCaseStudiesByCategory({ categoryIds, page })
+      : getCaseStudiesByCategory({ categoryId: 0, page });
+    request
       .then((data) => {
         if (!cancelled) setPayload(data || { data: [], current_page: 1, last_page: 1 });
       })
@@ -126,7 +168,7 @@ export default function CaseStudiesList({
     return () => {
       cancelled = true;
     };
-  }, [active, page]);
+  }, [selectedKey, page]);
 
   const items = payload?.data || [];
   const currentPage = payload?.current_page || 1;
@@ -145,22 +187,17 @@ export default function CaseStudiesList({
         </div>
 
         <div className="flex flex-row flex-wrap gap-2 mt-4 lg:mt-10">
-          {tabs.map((cat, i) => (
+          {tabs.map((cat) => (
             <button
-              key={i}
-              onClick={() => {
-                if (cat.id !== active.id) {
-                  setActive(cat);
-                  setPage(1);
-                }
-              }}
-              className={`h-9 px-4 py-2 ${
-                active?.name === cat?.name ? "bg-[#fff]" : "bg-[#FDF6E3]"
-              } hover:bg-[#fff] justify-center items-center gap-2 inline-flex`}
+              key={categoryKey(cat)}
+              type="button"
+              aria-pressed={selected.some((item) => categoryKey(item) === categoryKey(cat))}
+              onClick={() => toggleCategory(cat)}
+              className={`case-study-tab${
+                selected.some((item) => categoryKey(item) === categoryKey(cat)) ? " is-selected" : ""
+              }`}
             >
-              <span className="text-center text-[#4A4A89] text-base font-normal font-['Open_Sans'] leading-tight tracking-tight">
-                {cat?.name?.toUpperCase()}
-              </span>
+              <span>{cat?.name?.toUpperCase()}</span>
             </button>
           ))}
         </div>

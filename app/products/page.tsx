@@ -2,7 +2,6 @@ import PageHero from "@/components/PageHero";
 import ProductsList from "@/components/products/ProductsList";
 import ContactSection from "@/components/ContactSection";
 import { getProducts } from "@/lib/api";
-
 export const metadata = {
   title: "Products | Flyte Solutions Ltd.",
   description:
@@ -17,6 +16,7 @@ export default async function ProductsPage() {
   return (
     <div>
       <PageHero
+        className="light-page-offset"
         eyebrow="Explore Our Products, Designed for Your Success!"
         title="Discover Innovative Solutions Built for Your Business"
         description="Explore our range of products designed to enhance your operations, boost productivity, and help you achieve your goals effortlessly."

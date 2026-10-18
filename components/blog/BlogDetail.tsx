@@ -56,8 +56,8 @@ export default function BlogDetail({ blog, slug }: { blog?: Blog; slug: string }
   };
 
   return (
-    <div className="container">
-      <div className="flex gap-8 mb-8 pt-8">
+    <div className="light-page-offset container">
+      <div className="flex gap-8 mb-8">
         <div className="w-full h-fit">
           <div className="mb-4 flex flex-wrap gap-2">
             {tag?.map((t, i) => (

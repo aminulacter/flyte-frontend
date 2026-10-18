@@ -1,0 +1,25 @@
+/* Light pages pin the header so it stays visible while scrolling. */
+.site-header--pinned {
+  box-shadow: 0 2px 12px rgba(21, 20, 17, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .site-header--pinned {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+}
+
+/* Clear the desktop header (100px) with about 16px of space. */
+.light-page-offset {
+  padding-top: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .light-page-offset {
+    padding-top: 7.25rem;
+  }
+}

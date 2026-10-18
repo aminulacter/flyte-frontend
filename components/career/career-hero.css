@@ -1,0 +1,10 @@
+/* Clear the absolute desktop header (100px) without the old 160px pad. */
+.career-hero {
+  padding-top: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .career-hero {
+    padding-top: 7.25rem;
+  }
+}

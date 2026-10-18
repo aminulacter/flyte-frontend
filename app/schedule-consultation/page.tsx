@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ScheduleConsultationPage() {
   return (
-    <div className="lg:mt-20">
+    <div className="light-page-offset">
       <div
         className="calendly-inline-widget"
         data-url="https://calendly.com/saiful-flytesolutions/consultancy?hide_gdpr_banner=1"

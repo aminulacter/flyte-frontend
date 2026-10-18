@@ -1,6 +1,6 @@
 export default function PrivacyPolicyPage() {
   return (
-    <div className="mt-5 lg:mt-40 container lg:px-8 text-gray-800">
+    <div className="light-page-offset container lg:px-8 text-gray-800">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
       <p className="text-sm text-gray-500 mb-6">Effective Date: July 29, 2025</p>
       <p className="mb-6">

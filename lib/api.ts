@@ -20,6 +20,8 @@ import type {
   Career,
   CaseStudiesPageContent,
   CaseStudy,
+  CaseStudyDetailData,
+  MegaMenu,
   PaginatedResponse,
   Product,
   ProductApiResponse,
@@ -27,6 +29,25 @@ import type {
   SoftwareSolution,
   TrendingBlogs,
 } from "@/lib/types";
+
+export interface CmsBlock {
+  type: string;
+  data: Record<string, unknown>;
+}
+
+export interface CmsPage {
+  id?: number;
+  type?: string;
+  title?: string;
+  slug: string;
+  excerpt?: string;
+  blocks?: CmsBlock[];
+}
+
+export interface CmsPageIndex {
+  landing: CmsPage | null;
+  items: CmsPage[];
+}
 
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE_URL || "https://admin.flytesolutions.com/api";
@@ -72,17 +93,28 @@ export const getProduct = (slug: string) => apiGet<ProductApiResponse>(`products
 // Case studies
 export const getContentCaseStudies = () => apiGet<CaseStudiesPageContent>("content-case-studies");
 export const getCaseStudies = () => apiGet<PaginatedResponse<CaseStudy>>("case-studies", { fallback: { data: [] } });
-export const getSpecificCaseStudy = (slug: string) => apiGet<CaseStudy>(`case-studies/${slug}`);
+export const getSpecificCaseStudy = (slug: string) => apiGet<CaseStudyDetailData>(`case-studies/${slug}`);
 export const getCaseStudiesByCategory = ({
   categoryId = 0,
+  categoryIds,
   page = 1,
 }: {
   categoryId?: number;
+  /** Click order. Sent reversed so the last selected id is first: `category_id=3,2,1`. */
+  categoryIds?: number[];
   page?: number;
-} = {}) =>
-  apiGet<PaginatedResponse<CaseStudy>>(`case-studies?category_id=${categoryId ?? 0}&page=${page}`, {
-    fallback: { data: [], current_page: 1, last_page: 1 },
-  });
+} = {}) => {
+  const categoryParam =
+    categoryIds && categoryIds.length > 0
+      ? [...categoryIds].reverse().join(",")
+      : String(categoryId ?? 0);
+  return apiGet<PaginatedResponse<CaseStudy>>(
+    `case-studies?category_id=${categoryParam}&page=${page}`,
+    {
+      fallback: { data: [], current_page: 1, last_page: 1 },
+    }
+  );
+};
 
 // Marketing content
 export const getAboutUs = () => apiGet<AboutUsData>("aboutus");
@@ -111,6 +143,17 @@ export async function postFormData(endpoint: string, formData: FormData): Promis
   if (!res.ok) throw new Error(`POST ${endpoint} failed: ${res.status}`);
   return res.json() as Promise<ApiEnvelope>;
 }
+
+export const getNavigation = () =>
+  apiGet<{ megaMenus?: MegaMenu[]; companyMenu?: MegaMenu | null }>("navigation", {
+    fallback: { megaMenus: [], companyMenu: null },
+  });
+export const getServiceIndex = () => apiGet<CmsPageIndex>("services", { fallback: { landing: null, items: [] } });
+export const getIndustryIndex = () => apiGet<CmsPageIndex>("industries", { fallback: { landing: null, items: [] } });
+export const getHireIndex = () => apiGet<CmsPageIndex>("hire", { fallback: { landing: null, items: [] } });
+export const getServicePage = (slug: string) => apiGet<CmsPage>(`services/${slug}`);
+export const getIndustryPage = (slug: string) => apiGet<CmsPage>(`industries/${slug}`);
+export const getHirePage = (slug: string) => apiGet<CmsPage>(`hire/${slug}`);
 
 export const submitContact = (formData: FormData) => postFormData("addContact", formData);
 export const submitJobApplication = (body: Record<string, unknown>) => postForm("applicationsubmit", body);

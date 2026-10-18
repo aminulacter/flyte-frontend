@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "./career-hero.css";
 
 const badges = [
   { src: "https://i.ibb.co.com/JtcqtSf/surface1.png", alt: "certification-0" },
@@ -8,7 +9,7 @@ const badges = [
 
 export default function CareerHero() {
   return (
-    <div className="container pt-5 lg:pt-40 mb-10 md:mb-16 flex flex-col lg:flex-row gap-5 md:gap-20 w-full">
+    <div className="career-hero container mb-10 md:mb-16 flex flex-col lg:flex-row gap-5 md:gap-20 w-full">
       <div className="flex flex-col gap-5 md:gap-10 lg:w-1/2">
         <h2 className="text-xl md:text-4xl font-bold !leading-[46px]">
           Discover How We Empower Careers to Reach New Heights

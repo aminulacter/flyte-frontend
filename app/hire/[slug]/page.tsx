@@ -1,21 +1,25 @@
 import { notFound, redirect } from "next/navigation";
 import HireCategoryRolePage from "@/components/hire/HireCategoryRolePage";
+import { getHireIndex, getHirePage } from "@/lib/api";
+import { pageToHireRole } from "@/lib/cms";
 import {
   HIRE_CATEGORY_SLUGS,
   hireRolePath,
-  isHireCategory,
   isHireSpecialty,
 } from "@/lib/hire/catalog";
 import { getHireRole } from "@/lib/hire/roles";
 import type { SlugPageProps } from "@/lib/types";
 
-export function generateStaticParams() {
-  return HIRE_CATEGORY_SLUGS.map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const index = await getHireIndex();
+  const slugs = new Set(HIRE_CATEGORY_SLUGS);
+  index?.items?.filter((item) => item.type === "hire_role").forEach((item) => item.slug && slugs.add(item.slug));
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: SlugPageProps) {
   const { slug } = await params;
-  const role = getHireRole(slug);
+  const role = pageToHireRole(await getHirePage(slug)) || getHireRole(slug);
   if (!role) return { title: "Hire | Flyte Solutions Ltd." };
   return {
     title: `${role.hero.title} | Flyte Solutions Ltd.`,
@@ -29,8 +33,7 @@ export default async function HireCategoryRoutePage({ params }: SlugPageProps) {
   if (isHireSpecialty(slug)) {
     redirect(hireRolePath(slug));
   }
-  if (!isHireCategory(slug)) notFound();
-  const role = getHireRole(slug);
+  const role = pageToHireRole(await getHirePage(slug)) || getHireRole(slug);
   if (!role) notFound();
   return <HireCategoryRolePage role={role} />;
 }

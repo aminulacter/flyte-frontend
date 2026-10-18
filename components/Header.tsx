@@ -45,8 +45,7 @@ function ReviewWidgets({ label }: { label: string }) {
   );
 }
 
-function DropdownButton({ label, light }: { label: string; light: boolean }) {
-  const tone = light ? "text-black" : "group-hover:text-black lg:text-white";
+function DropdownButton({ label, tone }: { label: string; tone: string }) {
   return (
     <div className="nav__link dropdown__button  ">
       <p className={`hover:text-[#2B6CB0] ${tone}`}>{label}</p>
@@ -55,11 +54,11 @@ function DropdownButton({ label, light }: { label: string; light: boolean }) {
   );
 }
 
-function MegaDropdown({ menu, light }: { menu: MegaMenu; light: boolean }) {
+function MegaDropdown({ menu, tone }: { menu: MegaMenu; tone: string }) {
   const { label, title, description, moreHref, items } = menu;
   return (
     <li className="dropdown__item">
-      <DropdownButton label={label} light={light} />
+      <DropdownButton label={label} tone={tone} />
       <div className="dropdown__container">
         <div className="dropdown__content">
           <div className="lg:container grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
@@ -103,11 +102,11 @@ function MegaDropdown({ menu, light }: { menu: MegaMenu; light: boolean }) {
   );
 }
 
-function CompanyDropdown({ menu, light }: { menu: typeof COMPANY_MENU; light: boolean }) {
+function CompanyDropdown({ menu, tone }: { menu: MegaMenu; tone: string }) {
   const { label, title, description, moreHref, items } = menu;
   return (
     <li className="dropdown__item">
-      <DropdownButton label={label} light={light} />
+      <DropdownButton label={label} tone={tone} />
       <div className="dropdown__container">
         <div className="dropdown__content">
           <div className="lg:container grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
@@ -132,7 +131,7 @@ function CompanyDropdown({ menu, light }: { menu: typeof COMPANY_MENU; light: bo
                       </div>
                       <div className="mt-6 hidden lg:block w-fit mx-auto">
                         <button className="px-6 py-1.5 text-[10px] font-semibold hover:text-white bg-white hover:bg-black transition duration-300 rounded-md shadow-[0px_0px_10px_10px_rgba(230,230,230,0.25)] outline outline-1 outline-offset-[-1px] outline-[#dddddd]">
-                          {item.cta}
+                          {item.cta || "Learn more"}
                         </button>
                       </div>
                     </div>
@@ -155,20 +154,39 @@ function CompanyDropdown({ menu, light }: { menu: typeof COMPANY_MENU; light: bo
   );
 }
 
-export default function Header() {
+export default function Header({
+  megaMenus,
+  companyMenu,
+}: {
+  megaMenus?: MegaMenu[];
+  companyMenu?: MegaMenu | null;
+} = {}) {
   const pathname = usePathname();
   const light =
+    pathname === "/case-studies" ||
+    pathname.startsWith("/case-studies/") ||
+    pathname === "/career" ||
+    pathname.startsWith("/career/") ||
+    pathname === "/products" ||
+    pathname.startsWith("/products/") ||
+    pathname === "/company" ||
+    pathname.startsWith("/company/") ||
+    pathname === "/contact-us" ||
+    pathname === "/privacy-policy" ||
+    pathname === "/schedule-consultation" ||
     pathname.startsWith("/hire/") ||
     pathname.startsWith("/hire-sp/") ||
     pathname.startsWith("/industries/") ||
     pathname.startsWith("/services/");
-  const tone = light ? "text-black" : "group-hover:text-black lg:text-white";
-  const [hire, industries, services, products] = MEGA_MENUS;
+  const tone = light ? "text-[#151411]" : "group-hover:text-black lg:text-white";
+  const menus = megaMenus?.length ? megaMenus : MEGA_MENUS;
+  const company = companyMenu?.items?.length ? companyMenu : COMPANY_MENU;
+  const [hire, industries, services, products] = menus;
   return (
     <div className="">
       <div
-        className={`group top-0 left-0 z-[1000] w-full transition-all duration-500 ease-in-out lg:absolute ${
-          light ? "bg-white" : "bg-transparent lg:hover:bg-white"
+        className={`group top-0 left-0 z-[1000] w-full transition-all duration-500 ease-in-out ${
+          light ? "site-header--pinned bg-white" : "lg:absolute bg-transparent lg:hover:bg-white"
         }`}
       >
         <nav className="nav container">
@@ -185,16 +203,16 @@ export default function Header() {
 
           <div className="nav__menu" id="nav-menu">
             <ul className="nav__list">
-              <MegaDropdown menu={hire} light={light} />
-              <MegaDropdown menu={industries} light={light} />
-              <MegaDropdown menu={services} light={light} />
-              <MegaDropdown menu={products} light={light} />
+              <MegaDropdown menu={hire} tone={tone} />
+              <MegaDropdown menu={industries} tone={tone} />
+              <MegaDropdown menu={services} tone={tone} />
+              <MegaDropdown menu={products} tone={tone} />
               <li className="">
                 <Link className="nav-close nav__link h-full flex items-center " href="/case-studies">
                   <span className={tone}>Case Studies</span>
                 </Link>
               </li>
-              <CompanyDropdown menu={COMPANY_MENU} light={light} />
+              <CompanyDropdown menu={company} tone={tone} />
               <li className="">
                 <Link className="nav-close nav__link h-full flex items-center " href="/career">
                   <span className={tone}>Career</span>

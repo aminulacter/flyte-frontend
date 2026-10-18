@@ -1,0 +1,30 @@
+.case-study-tab {
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 87px;
+  height: 36px;
+  padding: 8px 16px;
+  background: #fafafa;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.case-study-tab span {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 20px !important;
+  letter-spacing: 0.1px !important;
+  color: #4a4a89 !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.case-study-tab.is-selected {
+  background: #4a4a89;
+}
+
+.case-study-tab.is-selected span {
+  color: #ffffff !important;
+}

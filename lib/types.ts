@@ -126,6 +126,67 @@ export interface CaseStudy {
   tag?: string[];
 }
 
+export interface CaseStudyStep {
+  developing_step_title?: string;
+  description?: string;
+}
+
+export interface CaseStudySolution {
+  title?: string;
+  case_studies_title?: string;
+  service_image?: string;
+  short_description?: string;
+}
+
+export interface CaseStudyImpact {
+  icon_class?: string;
+  impactful_title?: string;
+  short_description?: string;
+  impactful_image?: string;
+}
+
+export interface CaseStudyFeature {
+  title?: string;
+  icon?: string;
+}
+
+export interface CaseStudyTestimonial {
+  company_name?: string;
+  company_logo?: string;
+  description?: string;
+  image?: string;
+  name?: string;
+  designation?: string;
+}
+
+export interface CaseStudyDetailData extends Omit<CaseStudy, "category"> {
+  short_title?: string;
+  location?: string;
+  category?: { id?: number; name?: string } | null;
+  service?: string;
+  partnership?: string;
+  hero_image?: string;
+  challenge_title?: string;
+  pain_points_title?: string;
+  developing_title?: string;
+  developing_short_description?: string;
+  developing_short_title?: string;
+  developing_image?: string;
+  developing_step?: CaseStudyStep[];
+  services?: CaseStudySolution[];
+  apps_list?: Array<{ name?: string; logo?: string }>;
+  impactful?: CaseStudyImpact[];
+  features_title?: string;
+  features_subtitle?: string;
+  features?: CaseStudyFeature[];
+  testimonials?: CaseStudyTestimonial[];
+  client_feedback_company_name?: string;
+  client_feedback_description?: string;
+  client_feedback_image?: string;
+  client_feedback_name?: string;
+  client_feedback_designation?: string;
+}
+
 export interface Career {
   id?: number | string;
   slug?: string;
@@ -139,6 +200,9 @@ export interface Career {
   experience?: string;
   employment_status?: string;
   salary?: string;
+  office_time?: string;
+  deadline?: string;
+  skills?: string[];
 }
 
 export interface SoftwareSolution {
@@ -347,6 +411,7 @@ export interface NavMenuItem {
   icon: string;
   title: string;
   desc: string;
+  cta?: string;
 }
 
 export interface MegaMenu {
@@ -389,6 +454,7 @@ export interface PageHeroProps {
   ctaHref?: string;
   overlay?: string;
   width?: string;
+  className?: string;
 }
 
 export interface RecoveredHtmlProps {

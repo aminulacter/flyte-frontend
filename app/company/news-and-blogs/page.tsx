@@ -19,6 +19,7 @@ export default async function NewsAndBlogsPage() {
   return (
     <div>
       <PageHero
+        className="light-page-offset"
         eyebrow="Insights, Trends & Expert Advice"
         title="Stay Informed with Our Latest Insights!"
         description="Explore expert perspectives, industry trends, and practical advice through our news and blogs."

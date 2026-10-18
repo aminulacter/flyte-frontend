@@ -19,7 +19,7 @@ const imageAlt = "Hire Role Image";
 function HireRoleHero({ hero }: { hero: HireRole["hero"] }) {
   const { eyebrow, title, description, image, ctaLabel, ctaHref } = hero;
   return (
-    <section className="hire-role-hero relative pt-10 lg:min-h-[610px] lg:pt-44">
+    <section className="hire-role-hero light-page-offset relative lg:min-h-[610px]">
       <div className="hire-role-hero__inner container relative pb-8 lg:pb-16">
         <div className="hire-role-hero__grid grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
           <div className="hire-role-hero__content">

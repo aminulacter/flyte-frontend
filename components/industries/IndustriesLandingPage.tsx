@@ -201,8 +201,12 @@ function IndustriesShowcase({ items }: { items: IndustryLandingItem[] }) {
   );
 }
 
-export default function IndustriesLandingPage() {
-  const { hero, items } = INDUSTRIES_LANDING;
+export default function IndustriesLandingPage({
+  content,
+}: {
+  content?: { hero: HeroContent; items: IndustryLandingItem[] } | null;
+} = {}) {
+  const { hero, items } = content?.hero ? content : INDUSTRIES_LANDING;
 
   return (
     <div>

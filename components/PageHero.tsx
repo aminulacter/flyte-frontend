@@ -15,10 +15,11 @@ export default function PageHero({
   ctaHref = "/schedule-consultation",
   overlay = "bg-opacity-60",
   width = "lg:w-[50%]",
+  className = "pt-10 lg:pt-44",
 }: PageHeroProps) {
   return (
     <div
-      className="pt-10 lg:pt-44 relative lg:min-h-[600px] bg-cover bg-center bg-no-repeat"
+      className={`${className} relative lg:min-h-[600px] bg-cover bg-center bg-no-repeat`}
       style={image ? { backgroundImage: `url(${image})` } : undefined}
     >
       <div className={`absolute inset-0 bg-black ${overlay}`} />

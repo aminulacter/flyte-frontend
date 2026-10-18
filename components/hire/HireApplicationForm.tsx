@@ -184,7 +184,7 @@ export default function HireApplicationForm() {
   }
 
   return (
-    <div className="bg-white py-0 md:py-10 lg:mt-[100px] border-t">
+    <div className="light-page-offset bg-white md:pb-10 border-t">
       <div className="container py-5 bg-[#F9F9F9] lg:max-w-[1040px] rounded-[15px] shadow-md flex flex-col items-center">
         <div className="md:text-center">
           <h6 className="text-black text-xl font-bold mb-2 md:mb-4">

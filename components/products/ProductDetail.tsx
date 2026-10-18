@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { ProductDetailData, ProductScreenshot, ProductTechnology } from "@/lib/types";
-
+import { TrustedLeadersSection } from "@/components/hire/HireSharedSections";
 /**
  * Product detail page body, rebuilt from the original bundle. Data comes from
  * `GET /products/{slug}` (fetched at build time). Client component because of
@@ -41,7 +41,7 @@ function toEmbed(url: string) {
 
 function Header({ product }: { product: ProductDetailData }) {
   return (
-    <div className="container pt-5 lg:pt-40 mb-3 space-y-2 md:space-y-4">
+    <div className="light-page-offset container mb-3 space-y-2 md:space-y-4">
       <div className="flex flex-wrap gap-2 md:gap-5">
         {product?.tag?.map((t, i) => (
           <span key={i} className="px-3 py-1.5 bg-[#5856d6] rounded-md text-white text-sm font-medium">
@@ -263,9 +263,8 @@ function Sections({ product }: { product: ProductDetailData }) {
         return (
           <div
             key={i}
-            className={`lg:px-16 py-4 lg:py-8 flex flex-col lg:flex-row gap-5 lg:gap-10 ${
-              i % 2 === 0 ? "lg:flex-row-reverse" : ""
-            }`}
+            className={`lg:px-16 py-4 lg:py-8 flex flex-col lg:flex-row gap-5 lg:gap-10 ${i % 2 === 0 ? "lg:flex-row-reverse" : ""
+              }`}
           >
             <div className="lg:w-1/2 space-y-4 lg:space-y-8 max-h-[320px] overflow-hidden">
               <h2 className="text-gray-800 text-xl lg:text-3xl font-semibold">{s?.section?.title}</h2>
@@ -351,6 +350,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
       <OverviewBlock product={product} />
       <Sections product={product} />
       <Productivity product={product} />
+      <TrustedLeadersSection />
     </div>
   );
 }

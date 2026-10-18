@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
+import "./case-studies-intro.css";
 
 /**
  * Case-studies hero: left column with the intro copy + review widgets, right
@@ -17,13 +18,15 @@ function ImageRow({
   images,
   direction,
   speed,
+  className = "",
 }: {
   images: Array<string | { image?: string }>;
   direction: "left" | "right";
   speed: number;
+  className?: string;
 }) {
   return (
-    <Marquee className="rounded-xl" gradient={false} speed={speed} pauseOnHover direction={direction}>
+    <Marquee className={className} gradient={false} speed={speed} pauseOnHover direction={direction}>
       {images.map((img, i) => (
         <div key={i} className="px-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -31,6 +34,8 @@ function ImageRow({
             className="w-[250px] lg:w-[350px] h-[150px] lg:h-[250px] rounded-xl"
             src={typeof img === "string" ? img : img?.image}
             alt={`Case studies image - ${i + 1}`}
+            fetchPriority="high"
+            loading="eager"
             decoding="async"
           />
         </div>
@@ -50,12 +55,12 @@ export default function CaseStudiesIntro({
   const description = stripHtml((content?.description as string) || "");
 
   return (
-    <div className="w-full py-5 lg:py-10">
+    <div className="case-studies-intro w-full py-5 lg:py-10">
       <div className="w-full flex flex-row">
         <div className="container w-full flex flex-col lg:flex-row items-center gap-5 h-full overflow-x-hidden">
           {/* Left: copy */}
           <div className="w-full lg:w-1/3 h-full">
-            <div className="flex flex-col gap-3 lg:gap-6 justify-center mb-5 lg:mb-0">
+            <div className="flex flex-col gap-3 lg:gap-6 justify-center mb-5 lg:mb-0 pt-10">
               <h4 className="text-[#5856d6] text-lg font-bold">Explore Our Success Stories</h4>
               <h1 className="text-zinc-950 text-2xl lg:text-4xl font-bold lg:leading-[46px] mb-1">
                 {title}
@@ -113,17 +118,18 @@ export default function CaseStudiesIntro({
             </div>
           </div>
 
-          {/* Right: image marquees */}
+          {/* Right: two image rows beside the copy */}
           <div className="w-full lg:w-2/3 flex flex-col gap-4 h-full">
             <div className="space-y-4">
-              <ImageRow images={images} direction="left" speed={30} />
-              <ImageRow images={images} direction="right" speed={25} />
-            </div>
-            <div className="flex flex-row gap-2 mt-2">
-              <ImageRow images={images} direction="left" speed={28} />
+              <ImageRow images={images} direction="left" speed={30} className="rounded-lg" />
+              <ImageRow images={images} direction="right" speed={25} className="rounded-xl" />
             </div>
           </div>
         </div>
+      </div>
+      {/* Full-bleed third row, outside the centered container */}
+      <div className="flex flex-row gap-2 mt-2">
+        <ImageRow images={images} direction="left" speed={28} />
       </div>
     </div>
   );
